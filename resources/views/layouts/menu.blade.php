@@ -307,3 +307,13 @@
         </a>
 </li>
 @endcan
+
+
+@can('project.index')
+<li>
+    <a href="{{ route('projects.index') }}">
+        <i class="bx bx-home-alt icon nav-icon"></i>
+        <span class="menu-item">Projects</span>
+        </a>
+</li>
+@endcan

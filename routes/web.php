@@ -42,3 +42,5 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 Route::resource('coyCoys', App\Http\Controllers\CoyCoyController::class);
+
+Route::resource('projects', App\Http\Controllers\ProjectController::class);
