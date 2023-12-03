@@ -34,7 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('updatePassword', [UserController::class, 'updatePassword'])->name('update.password');
     Route::post('updateFotoProfile', [UserController::class, 'updateFotoProfile'])->name('update.foto.profile');
     
-    Route::resource('kucings', App\Http\Controllers\KucingController::class);
+    
     Route::resource('users', UserController::class);
     Route::resource('roles', App\Http\Controllers\RoleController::class);
     Route::resource('permissions', App\Http\Controllers\PermissionController::class);

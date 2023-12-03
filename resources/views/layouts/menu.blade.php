@@ -308,14 +308,6 @@
 
 <li class="menu-title">User</li>
 
-@can('kucing.index')
-<li>
-    <a href="{{ route('kucings.index') }}">
-        <i class="bx bx-home-alt icon nav-icon"></i>
-        <span class="menu-item">Kucings</span>
-        </a>
-</li>
-@endcan
 
 @can('project.index')
 <li>
