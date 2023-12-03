@@ -317,3 +317,12 @@
         </a>
 </li>
 @endcan
+
+@can('method.index')
+<li>
+    <a href="{{ route('methods.index') }}">
+        <i class="bx bx-home-alt icon nav-icon"></i>
+        <span class="menu-item">Methods</span>
+        </a>
+</li>
+@endcan
