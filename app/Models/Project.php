@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Project extends Model
 {
@@ -53,13 +54,29 @@ class Project extends Model
         return $this->belongsToMany(\App\Models\Method::class, 'project_has_methods');
     }
 
-    public function users(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function sessionProject(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->hasMany(\App\Models\User::class, 'session_project');
+        return $this->hasOne(\App\Models\User::class, 'session_project');
     }
 
-    public function user1s(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function users(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(\App\Models\User::class, 'user_has_projects');
     }
+
+    public static function createUniqueSlug($title): string
+    {
+        $slug = Str::slug($title);
+        $originalSlug = $slug;
+        $count = 1;
+
+        // Cek apakah slug sudah digunakan sebelumnya (tanpa memperhatikan yang dihapus)
+        while (static::where('slug', $slug)->exists()) {
+            $slug = $originalSlug . '-' . $count;
+            $count++;
+        }
+
+        return $slug;
+    }
+
 }

@@ -20,6 +20,7 @@ Route::get('/', function () {
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+// Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 Auth::routes();
 
@@ -37,11 +38,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('users', UserController::class);
     Route::resource('roles', App\Http\Controllers\RoleController::class);
     Route::resource('permissions', App\Http\Controllers\PermissionController::class);
-    // Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+    Route::resource('projects', App\Http\Controllers\ProjectController::class);
+    Route::resource('methods', App\Http\Controllers\MethodController::class);
+
+    Route::post('/changeProject/{id}', [App\Http\Controllers\ProjectController::class, 'changeProject'])->name('changeProject');
 });
 
 
-Route::resource('coyCoys', App\Http\Controllers\CoyCoyController::class);
-
-Route::resource('projects', App\Http\Controllers\ProjectController::class);
-Route::resource('methods', App\Http\Controllers\MethodController::class);

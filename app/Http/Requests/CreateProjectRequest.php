@@ -17,13 +17,16 @@ class CreateProjectRequest extends FormRequest
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    public function rules() : array
     {
-        return Project::$rules;
+        return [
+            'title' => 'required|string|max:100',
+            'status_publish' => 'required|string',
+            'slug' => 'required|string|max:130',
+            'seo_keyword' => 'nullable|string|max:100',
+            'seo_description' => 'nullable|string|max:160',
+            'content' => 'nullable|string|max:65535',
+            'method_id' => 'required',
+        ];
     }
 }

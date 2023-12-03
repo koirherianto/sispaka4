@@ -297,6 +297,15 @@
     </a>
 </li>
 
+@can('method.index')
+<li>
+    <a href="{{ route('methods.index') }}">
+        <i class="bx bx-home-alt icon nav-icon"></i>
+        <span class="menu-item">Methods</span>
+        </a>
+</li>
+@endcan
+
 <li class="menu-title">User</li>
 
 @can('kucing.index')
@@ -308,21 +317,11 @@
 </li>
 @endcan
 
-
 @can('project.index')
 <li>
     <a href="{{ route('projects.index') }}">
         <i class="bx bx-home-alt icon nav-icon"></i>
         <span class="menu-item">Projects</span>
-        </a>
-</li>
-@endcan
-
-@can('method.index')
-<li>
-    <a href="{{ route('methods.index') }}">
-        <i class="bx bx-home-alt icon nav-icon"></i>
-        <span class="menu-item">Methods</span>
         </a>
 </li>
 @endcan
