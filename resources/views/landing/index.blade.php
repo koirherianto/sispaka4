@@ -121,8 +121,8 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-7">
-                                    <div class="b-text">Outstanding Web<br>Hosting for you.</div>
-                                    <div class="m-text">Starting at only <span class="bold">$2.38/mo*</span></div>
+                                    <div class="b-text">Buat Sistem Pakar <br>Tanpa Kode</div>
+                                    <div class="m-text">Jangan biarkan penelitian Sistem Pakar anda berakhir pada jurnal yang <span class="bold">tidak terbaca</span></div>
                                     <a href="#" class="hbtn hbtn-primary hbtn-lg">Hosting Services</a>
                                 </div>
                             </div>
