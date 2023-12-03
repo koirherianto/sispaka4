@@ -113,8 +113,9 @@ class ProjectController extends AppBaseController
 
         $isCreatedPage = false;
         $methods = Method::all();
+        $users = User::pluck('name', 'id');
 
-        return view('projects.edit', compact('project', 'methods', 'isCreatedPage'));
+        return view('projects.edit', compact('project', 'methods', 'users' ,'isCreatedPage'));
     }
 
     /**
@@ -129,7 +130,13 @@ class ProjectController extends AppBaseController
             return redirect(route('projects.index'));
         }
 
-        $project = $this->projectRepository->update($request->all(), $id);
+        $input = $request->all();
+        unset($input['slug']); // slug tidak boleh diupdate
+        unset($input['method_id']); // method tidak boleh diupdate
+        unset($input['user_id']); // user tidak boleh diupdate
+        unset($input['status_publish']); // status_publish tidak boleh diupdate
+
+        $project = $this->projectRepository->update($input, $id);
 
         Flash::success('Project updated successfully.');
         return redirect(route('projects.index'));
@@ -149,6 +156,14 @@ class ProjectController extends AppBaseController
             return redirect(route('projects.index'));
         }
         DB::transaction(function () use ($project, $id) {
+            // hapus session_project pada user yang memiliki id project ini
+            User::all()->each(function ($user) use ($id) {
+                if ($user->session_project == $id) {
+                    $user->session_project = null;
+                    $user->save();
+                }
+            });
+
             $project->methods()->detach();
             $project->users()->detach();
             $this->projectRepository->delete($id);
@@ -160,9 +175,11 @@ class ProjectController extends AppBaseController
     }
 
     function changeProject($id) {
+        
         $user = Auth::user();
         $user->session_project = $id;
         $user->save();
+
         $project = Project::find($id);
         Flash::success('Project changed to '.$project->title.' successfully.');
         return redirect(route('projects.index'));

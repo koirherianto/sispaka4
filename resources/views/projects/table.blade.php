@@ -83,7 +83,7 @@
     </div>
 
 
-    {{-- <table id="data-table" class="table table-striped table-centered align-middle table-nowrap mb-0 table-check">
+    <table id="data-table" class="table table-striped table-centered align-middle table-nowrap mb-0 table-check">
         <thead>
         <tr>
             <th>Title</th>
@@ -141,4 +141,4 @@
             </tr>
         @endforeach
         </tbody>
-    </table> --}}
+    </table>

@@ -1,14 +1,15 @@
 <input type="hidden" name="status_publish" value="-">
 <input type="hidden" name="slug" value="-">
 
-@role('super-admin')
+@if ($isCreatedPage && auth()->user()->hasRole('super-admin'))
     <div class="form-group col-sm-6">
         {!! Form::label('user_id', 'User:') !!}
         {!! Form::select('user_id', $users, null, ['class' => 'form-control', 'required']) !!}
     </div>
 @else
-    <input type="hidden" name="user_id" value="-">    
+    <input type="hidden" name="user_id" value="-">
 @endrole
+
 
 <!-- Title Field -->
 <div class="form-group col-sm-6 mb-2">
