@@ -319,5 +319,14 @@
 @endcan
 
 @if (Auth::user()->sessionProjecthasBackwardChainingMethod())
-    <h1>xklvxk</h1>
+    {{-- <h1>xklvxk</h1> --}}
 @endif
+
+@can('backwardChaining.index')
+<li>
+    <a href="{{ route('backwardChainings.index') }}">
+        <i class="bx bx-home-alt icon nav-icon"></i>
+        <span class="menu-item">Backward Chainings</span>
+        </a>
+</li>
+@endcan

@@ -3,16 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+
 Route::get('/', function () {
     return view('landing.index');
 });
@@ -42,6 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('methods', App\Http\Controllers\MethodController::class);
 
     Route::post('/changeProject/{id}', [App\Http\Controllers\ProjectController::class, 'changeProject'])->name('changeProject');
+    Route::resource('backwardChainings', App\Http\Controllers\BackwardChaining\BackwardChainingController::class);
 });
 
 
