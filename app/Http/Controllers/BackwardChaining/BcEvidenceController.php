@@ -7,7 +7,11 @@ use App\Http\Requests\UpdateBcEvidenceRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\BcEvidenceRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Flash;
+use Response;
+use App\Models\Project;
+use App\Models\BcEvidence;
 
 class BcEvidenceController extends AppBaseController
 {
@@ -23,34 +27,22 @@ class BcEvidenceController extends AppBaseController
         $this->bcEvidenceRepository = $bcEvidenceRepo;
     }
 
-
     public function index(Request $request)
     {
-        if (Auth::user()->hasRole('super-admin')) {
-            $bcEvidences = $this->bcEvidenceRepository->orderBy('created_at', 'desc')->paginate(10);
-            foreach ($bcEvidences->items() as $bcEvidence) {
-                $usersMaker = $bcEvidence->backwardChaining->project->users;
-                $usersMaker = $usersMaker->implode('name', ', ');
-                $bcEvidence->usersMaker = $usersMaker;
-            }
-        }
+        $user = Auth::user();
+        $sessionProject = $user->session_project;
+        $project = Project::find($sessionProject);
 
-        $bcEvidences = $this->bcEvidenceRepository->paginate(10);
+        $bcEvidences = $project->backwardChaining->bcEvidences()?->orderBy('created_at', 'desc')?->paginate(10);
 
         return view('bc_evidences.index')->with('bcEvidences', $bcEvidences);
     }
 
-    /**
-     * Show the form for creating a new BcEvidence.
-     */
     public function create()
     {
         return view('bc_evidences.create');
     }
 
-    /**
-     * Store a newly created BcEvidence in storage.
-     */
     public function store(CreateBcEvidenceRequest $request)
     {
         $input = $request->all();
@@ -61,9 +53,6 @@ class BcEvidenceController extends AppBaseController
         return redirect(route('bcEvidences.index'));
     }
 
-    /**
-     * Display the specified BcEvidence.
-     */
     public function show($id)
     {
         $bcEvidence = $this->bcEvidenceRepository->find($id);
@@ -76,9 +65,6 @@ class BcEvidenceController extends AppBaseController
         return view('bc_evidences.show')->with('bcEvidence', $bcEvidence);
     }
 
-    /**
-     * Show the form for editing the specified BcEvidence.
-     */
     public function edit($id)
     {
         $bcEvidence = $this->bcEvidenceRepository->find($id);
@@ -91,9 +77,6 @@ class BcEvidenceController extends AppBaseController
         return view('bc_evidences.edit')->with('bcEvidence', $bcEvidence);
     }
 
-    /**
-     * Update the specified BcEvidence in storage.
-     */
     public function update($id, UpdateBcEvidenceRequest $request)
     {
         $bcEvidence = $this->bcEvidenceRepository->find($id);

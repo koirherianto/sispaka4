@@ -43,6 +43,11 @@ class Project extends Model
     {
         return $this->hasMany(\App\Models\BackwardChaining::class, 'project_id');
     }
+    // backwardChainings for 1 project
+    public function backwardChaining(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(\App\Models\BackwardChaining::class, 'project_id');
+    }
 
     public function contributors(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
