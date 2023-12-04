@@ -64,7 +64,7 @@ class ProjectController extends AppBaseController
     /**
      * Store a newly created Project in storage.
      */
-    public function store(Request $request)
+    public function store(CreateProjectRequest $request)
     {
         $input = $request->all();
         $input['status_publish'] = 'no'; // defaultnya jangan publish
