@@ -36,7 +36,7 @@ class BcEvidenceController extends AppBaseController
 
         $bcEvidences = $currentProject->backwardChaining->bcEvidences()?->orderBy('created_at', 'desc')?->paginate(10);
 
-        return view('bc_evidences.index', compact('bcEvidences', 'currentProject'));
+        return view('backward_chainings.bc_evidences.index', compact('bcEvidences', 'currentProject'));
     }
 
     public function create()
@@ -44,7 +44,7 @@ class BcEvidenceController extends AppBaseController
         $isCreatePage = true;
         $currentProject = Project::find(Auth::user()->session_project);
 
-        return view('bc_evidences.create', compact('isCreatePage', 'currentProject'));
+        return view('backward_chainings.bc_evidences.create', compact('isCreatePage', 'currentProject'));
     }
 
     public function store(CreateBcEvidenceRequest $request)
@@ -70,7 +70,7 @@ class BcEvidenceController extends AppBaseController
             return redirect(route('bcEvidences.index'));
         }
 
-        return view('bc_evidences.show')->with('bcEvidence', $bcEvidence);
+        return view('backward_chainings.bc_evidences.show')->with('bcEvidence', $bcEvidence);
     }
 
     public function edit($id)
@@ -82,7 +82,7 @@ class BcEvidenceController extends AppBaseController
             return redirect(route('bcEvidences.index'));
         }
 
-        return view('bc_evidences.edit')->with('bcEvidence', $bcEvidence);
+        return view('backward_chainings.bc_evidences.edit')->with('bcEvidence', $bcEvidence);
     }
 
     public function update($id, UpdateBcEvidenceRequest $request)

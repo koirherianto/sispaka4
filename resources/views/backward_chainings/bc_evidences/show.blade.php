@@ -18,7 +18,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    @include('bc_evidences.show_fields')
+                    @include('backward_chainings.bc_evidences.show_fields')
                 </div>
             </div>
             <div class="card-footer">
