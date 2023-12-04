@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\BcEvidence;
+use App\Models\BackwardChaining\BcEvidence;
 use App\Repositories\BaseRepository;
 
 class BcEvidenceRepository extends BaseRepository

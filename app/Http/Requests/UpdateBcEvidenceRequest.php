@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Models\BcEvidence;
+use App\Models\BackwardChaining\BcEvidence;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateBcEvidenceRequest extends FormRequest
