@@ -47,6 +47,8 @@ class BcEvidenceController extends AppBaseController
     {
         $input = $request->all();
 
+        
+
         $bcEvidence = $this->bcEvidenceRepository->create($input);
 
         Flash::success('Bc Evidence saved successfully.');

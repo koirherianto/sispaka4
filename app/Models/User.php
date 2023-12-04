@@ -79,5 +79,10 @@ class User extends Authenticatable implements HasMedia
 
         return false;
     }
+
+    public function getSessionProject(): ?int
+    {
+        return optional(Auth::user())->session_project;
+    }
     
 }

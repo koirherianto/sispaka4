@@ -9,6 +9,8 @@
     @enderror 
 </div>
 
+<input type="hidden" name="backward_chaining_id" value="-">
+
 <!-- Name Field -->
 <div class="form-group col-sm-6 mb-2">
     {!! Form::label('name', 'Name:') !!}
