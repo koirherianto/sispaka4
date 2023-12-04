@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\BackwardChaining;
 
-use App\Http\Requests\CreateBcEvidenceRequest;
-use App\Http\Requests\UpdateBcEvidenceRequest;
+use App\Http\Requests\BackwardChaining\CreateBcEvidenceRequest;
+use App\Http\Requests\BackwardChaining\UpdateBcEvidenceRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\BcEvidenceRepository;
 use Illuminate\Http\Request;
