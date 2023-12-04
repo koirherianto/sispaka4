@@ -24,7 +24,7 @@
         <div class="card-body">
 
             <div class="row">
-                @include('backward_chainings.fields')
+                @include('backward_chainings.backward_chainings.fields')
             </div>
 
         </div>

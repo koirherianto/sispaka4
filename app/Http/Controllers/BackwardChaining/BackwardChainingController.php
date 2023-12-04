@@ -30,7 +30,7 @@ class BackwardChainingController extends AppBaseController
     {
         $backwardChainings = $this->backwardChainingRepository->paginate(10);
 
-        return view('backward_chainings.index')->with('backwardChainings', $backwardChainings);
+        return view('backward_chainings.backward_chainings.index')->with('backwardChainings', $backwardChainings);
     }
 
     /**
@@ -38,7 +38,7 @@ class BackwardChainingController extends AppBaseController
      */
     public function create()
     {
-        return view('backward_chainings.create');
+        return view('backward_chainings.backward_chainings.create');
     }
 
     /**
@@ -66,7 +66,7 @@ class BackwardChainingController extends AppBaseController
             return redirect(route('backwardChainings.index'));
         }
 
-        return view('backward_chainings.show')->with('backwardChaining', $backwardChaining);
+        return view('backward_chainings.backward_chainings.show')->with('backwardChaining', $backwardChaining);
     }
 
     /**
@@ -81,7 +81,7 @@ class BackwardChainingController extends AppBaseController
             return redirect(route('backwardChainings.index'));
         }
 
-        return view('backward_chainings.edit')->with('backwardChaining', $backwardChaining);
+        return view('backward_chainings.backward_chainings.edit')->with('backwardChaining', $backwardChaining);
     }
 
     /**
