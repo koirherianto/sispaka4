@@ -32,8 +32,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('projects', App\Http\Controllers\ProjectController::class);
     Route::resource('methods', App\Http\Controllers\MethodController::class);
 
+    Route::post('/changeProject/{id}', [App\Http\Controllers\ProjectController::class, 'changeProject'])->name('changeProject');
     Route::group(['middleware' => ['ProjectSessionExist']], function () {
-        Route::post('/changeProject/{id}', [App\Http\Controllers\ProjectController::class, 'changeProject'])->name('changeProject');
         Route::resource('backwardChainings', App\Http\Controllers\BackwardChaining\BackwardChainingController::class);
         Route::resource('bcEvidences', App\Http\Controllers\BackwardChaining\BcEvidenceController::class);
     });
