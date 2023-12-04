@@ -317,3 +317,7 @@
         </a>
 </li>
 @endcan
+
+@if (Auth::user()->sessionProjecthasBackwardChainingMethod())
+    <h1>xklvxk</h1>
+@endif
