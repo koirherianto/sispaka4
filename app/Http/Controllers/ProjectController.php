@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\ProjectRepository;
 use Illuminate\Http\Request;
+use App\Models\BackwardChaining;
 use App\Models\Project;
 use App\Models\Method;
 use App\Models\User;
@@ -80,6 +81,15 @@ class ProjectController extends AppBaseController
             $project = $this->projectRepository->create($input);
             $project->methods()->sync($input['method_id']);
             $project->users()->sync([Auth::user()->id]);
+
+            $method = Method::find($input['method_id']);
+
+            if ($method->slug === 'backward-chaining') {
+                BackwardChaining::create([
+                    'project_id' => $project->id
+                ]);
+            }
+            
         }, 3);
 
         Flash::success('Project saved successfully.');

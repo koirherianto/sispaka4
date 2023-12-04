@@ -330,3 +330,12 @@
         </a>
 </li>
 @endcan
+
+@can('bcEvidence.index')
+<li>
+    <a href="{{ route('bcEvidences.index') }}">
+        <i class="bx bx-home-alt icon nav-icon"></i>
+        <span class="menu-item">Bc Evidences</span>
+        </a>
+</li>
+@endcan
