@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\BackwardChaining;
 
-use App\Http\Requests\CreateBackwardChainingRequest;
-use App\Http\Requests\UpdateBackwardChainingRequest;
+use App\Http\Requests\BackwardChaining\CreateBackwardChainingRequest;
+use App\Http\Requests\BackwardChaining\UpdateBackwardChainingRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\BackwardChainingRepository;
 use Illuminate\Http\Request;
