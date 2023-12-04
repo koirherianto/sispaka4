@@ -45,8 +45,6 @@ class ProjectController extends AppBaseController
             $projects = $user->projects()->paginate(10);
         }
 
-        $projects = $this->projectRepository->paginate(10);
-
         return view('projects.index', compact('projects','user'));
     }
 
