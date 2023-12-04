@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BackwardChaining;
 
-use App\Http\Requests\CreateBcGoalRequest;
-use App\Http\Requests\UpdateBcGoalRequest;
+use App\Http\Requests\BackwardChaining\CreateBcGoalRequest;
+use App\Http\Requests\BackwardChaining\UpdateBcGoalRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\BcGoalRepository;
 use Illuminate\Http\Request;
@@ -31,7 +31,7 @@ class BcGoalController extends AppBaseController
         $currentProject = Project::find(Auth::user()->session_project);
         $bcGoals = $currentProject->backwardChaining->bcGoals()->orderBy('created_at', 'desc')?->paginate(10);
 
-        return view('bc_goals.index')->with('bcGoals', $bcGoals);
+        return view('backward_chainings.bc_goals.index')->with('bcGoals', $bcGoals);
     }
 
     public function create()
@@ -39,7 +39,7 @@ class BcGoalController extends AppBaseController
         $isCreatePage = true;
         $currentProject = Project::find(Auth::user()->session_project);
 
-        return view('bc_goals.create', compact('isCreatePage', 'currentProject'));
+        return view('backward_chainings.bc_goals.create', compact('isCreatePage', 'currentProject'));
     }
 
     public function store(CreateBcGoalRequest $request)
@@ -65,7 +65,7 @@ class BcGoalController extends AppBaseController
             return redirect(route('bcGoals.index'));
         }
 
-        return view('bc_goals.show')->with('bcGoal', $bcGoal);
+        return view('backward_chainings.bc_goals.show')->with('bcGoal', $bcGoal);
     }
 
     public function edit($id)
@@ -77,7 +77,7 @@ class BcGoalController extends AppBaseController
             return redirect(route('bcGoals.index'));
         }
 
-        return view('bc_goals.edit')->with('bcGoal', $bcGoal);
+        return view('backward_chainings.bc_goals.edit')->with('bcGoal', $bcGoal);
     }
 
     public function update($id, UpdateBcGoalRequest $request)

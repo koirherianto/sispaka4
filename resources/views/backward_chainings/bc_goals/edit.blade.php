@@ -1,11 +1,10 @@
 @extends('layouts.master')
 
 @section('title')
-        Edit Bc Goal
-    @endsection
+    Edit Bc Goal
+@endsection
 
 @section('page-title')
-    
     Edit Bc Goal
 @endsection
 
@@ -23,7 +22,7 @@
 
         <div class="card-body">
             <div class="row">
-                @include('bc_goals.fields')
+                @include('backward_chainings.bc_goals.fields')
             </div>
         </div>
 

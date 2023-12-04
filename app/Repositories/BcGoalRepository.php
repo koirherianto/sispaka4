@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\BcGoal;
+use App\Models\BackwardChaining\BcGoal;
 use App\Repositories\BaseRepository;
 
 class BcGoalRepository extends BaseRepository

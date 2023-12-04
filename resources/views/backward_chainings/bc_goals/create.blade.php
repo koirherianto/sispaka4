@@ -1,13 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
-        Create Bc Goals
-    @endsection
+    Create Bc Goals
+@endsection
 
 @section('page-title')
-    
     Create Bc Goals
-    @endsection
+@endsection
 
 @section('body')
     <body>
@@ -24,7 +23,7 @@
         <div class="card-body">
 
             <div class="row">
-                @include('bc_goals.fields')
+                @include('backward_chainings.bc_goals.fields')
             </div>
 
         </div>

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\BackwardChaining;
 
-use App\Models\BcGoal;
+use App\Models\BackwardChaining\BcGoal;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateBcGoalRequest extends FormRequest
+class CreateBcGoalRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,6 @@ class UpdateBcGoalRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = BcGoal::$rules;
-        
-        return $rules;
+        return BcGoal::$rules;
     }
 }
