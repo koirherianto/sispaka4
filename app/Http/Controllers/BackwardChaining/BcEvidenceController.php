@@ -46,8 +46,9 @@ class BcEvidenceController extends AppBaseController
     public function store(CreateBcEvidenceRequest $request)
     {
         $input = $request->all();
+        $sessionProject = Auth::user()->session_project;
 
-        
+        $input['backward_chaining_id'] = Project::find($sessionProject)->backwardChaining->id;
 
         $bcEvidence = $this->bcEvidenceRepository->create($input);
 
