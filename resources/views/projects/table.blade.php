@@ -60,9 +60,9 @@
 
                             <div class="d-flex gap-2 pt-4">
                                 {!! Form::open(['route' => ['changeProject', $project->id], 'method' => 'post']) !!}
-                                    {!! Form::button($user->session_project == $project->id ? 'Unmanage' : 'Manage', [
+                                    {!! Form::button(Auth::user()->session_project == $project->id ? 'Unmanage' : 'Manage', [
                                         'type' => 'submit',
-                                        'class' => 'btn btn-sm ' . ($user->session_project == $project->id ? 'btn-soft-primary' : 'btn-primary'),
+                                        'class' => 'btn btn-sm ' . (Auth::user()->session_project == $project->id ? 'btn-soft-primary' : 'btn-primary'),
                                         'onclick' => "return confirm('Are you sure?')",
                                     ]) !!}
                                 {!! Form::close() !!}
