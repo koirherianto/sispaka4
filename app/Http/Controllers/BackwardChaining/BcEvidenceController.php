@@ -30,9 +30,7 @@ class BcEvidenceController extends AppBaseController
 
     public function index(Request $request)
     {
-        $user = Auth::user();
-        $sessionProject = $user->session_project;
-        $currentProject = Project::find($sessionProject);
+        $currentProject = Project::find(Auth::user()->session_project);
 
         $bcEvidences = $currentProject->backwardChaining->bcEvidences()?->orderBy('created_at', 'desc')?->paginate(10);
 

@@ -7,11 +7,14 @@ use App\Http\Requests\UpdateBcGoalRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\BcGoalRepository;
 use Illuminate\Http\Request;
+use App\Models\Project;
+use Response;
 use Flash;
+use Auth;
+
 
 class BcGoalController extends AppBaseController
 {
-    /** @var BcGoalRepository $bcGoalRepository*/
     private $bcGoalRepository;
 
     public function __construct(BcGoalRepository $bcGoalRepo)
@@ -23,102 +26,87 @@ class BcGoalController extends AppBaseController
         $this->bcGoalRepository = $bcGoalRepo;
     }
 
-    /**
-     * Display a listing of the BcGoal.
-     */
     public function index(Request $request)
     {
-        $bcGoals = $this->bcGoalRepository->paginate(10);
+        $currentProject = Project::find(Auth::user()->session_project);
+        $bcGoals = $currentProject->backwardChaining->bcGoals()->orderBy('created_at', 'desc')?->paginate(10);
 
         return view('bc_goals.index')->with('bcGoals', $bcGoals);
     }
 
-    /**
-     * Show the form for creating a new BcGoal.
-     */
     public function create()
     {
-        return view('bc_goals.create');
+        $isCreatePage = true;
+        $currentProject = Project::find(Auth::user()->session_project);
+
+        return view('bc_goals.create', compact('isCreatePage', 'currentProject'));
     }
 
-    /**
-     * Store a newly created BcGoal in storage.
-     */
     public function store(CreateBcGoalRequest $request)
     {
         $input = $request->all();
+        $sessionProject = Auth::user()->session_project;
+        $currentProject = Project::find($sessionProject);
+
+        $input['backward_chaining_id'] = $currentProject->backwardChaining->id;
 
         $bcGoal = $this->bcGoalRepository->create($input);
 
-        Flash::success('Bc Goal saved successfully.');
+        Flash::success('Backward Chaining Goal saved successfully.');
         return redirect(route('bcGoals.index'));
     }
 
-    /**
-     * Display the specified BcGoal.
-     */
     public function show($id)
     {
         $bcGoal = $this->bcGoalRepository->find($id);
         
         if (empty($bcGoal)) {
-            Flash::error('Bc Goal not found');
+            Flash::error('Backward Chaining Goal not found');
             return redirect(route('bcGoals.index'));
         }
 
         return view('bc_goals.show')->with('bcGoal', $bcGoal);
     }
 
-    /**
-     * Show the form for editing the specified BcGoal.
-     */
     public function edit($id)
     {
         $bcGoal = $this->bcGoalRepository->find($id);
 
         if (empty($bcGoal)) {
-            Flash::error('Bc Goal not found');
+            Flash::error('Backward Chaining Goal not found');
             return redirect(route('bcGoals.index'));
         }
 
         return view('bc_goals.edit')->with('bcGoal', $bcGoal);
     }
 
-    /**
-     * Update the specified BcGoal in storage.
-     */
     public function update($id, UpdateBcGoalRequest $request)
     {
         $bcGoal = $this->bcGoalRepository->find($id);
 
         if (empty($bcGoal)) {
-            Flash::error('Bc Goal not found');
+            Flash::error('Backward Chaining Goal not found');
             return redirect(route('bcGoals.index'));
         }
 
         $bcGoal = $this->bcGoalRepository->update($request->all(), $id);
 
-        Flash::success('Bc Goal updated successfully.');
+        Flash::success('Backward Chaining Goal updated successfully.');
         return redirect(route('bcGoals.index'));
     }
 
-    /**
-     * Remove the specified BcGoal from storage.
-     *
-     * @throws \Exception
-     */
     public function destroy($id)
     {
         $bcGoal = $this->bcGoalRepository->find($id);
 
         if (empty($bcGoal)) {
-            Flash::error('Bc Goal not found');
+            Flash::error('Backward Chaining Goal not found');
             return redirect(route('bcGoals.index'));
         }
 
         $this->bcGoalRepository->delete($id);
 
-        Flash::success('Bc Goal deleted successfully.');
+        Flash::success('Backward Chaining Goal deleted successfully.');
         return redirect(route('bcGoals.index'));
     }
 }
