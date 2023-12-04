@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\BackwardChaining;
 
-use App\Models\BcGoal;
+use App\Models\BackwardChaining\BcGoal;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateBcGoalRequest extends FormRequest
