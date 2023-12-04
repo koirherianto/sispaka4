@@ -49,21 +49,6 @@
                         </div>
                         {!! Form::close() !!}
                     </td>
-                    <td>
-                        <div class="dropdown">
-                            <a class="text-muted dropdown-toggle font-size-18" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true">
-                                <i class="mdi mdi-dots-horizontal"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="{{ route('bcGoals.edit', [$bcGoal->id]) }}">Edit</a>
-                                <a class="dropdown-item" href="{{ route('bcGoals.show', [$bcGoal->id]) }}">Detail</a>
-                                {!! Form::open(['route' => ['bcGoals.destroy', $bcGoal->id], 'method' => 'delete']) !!}
-                                {!! Form::button('Delete', ['type' => 'submit', 'class' => 'dropdown-item', 'onclick' => "return confirm('Are you sure?')"]) !!}
-                                {!! Form::close() !!}
-                            </div>
-                        </div>
-                    </td>
                 </tr>
             @endforeach
             </tbody>

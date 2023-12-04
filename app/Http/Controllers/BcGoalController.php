@@ -89,7 +89,10 @@ class BcGoalController extends AppBaseController
             return redirect(route('bcGoals.index'));
         }
 
-        $bcGoal = $this->bcGoalRepository->update($request->all(), $id);
+        $input = $request->all();
+        unset($input['backward_chaining_id']);
+
+        $bcGoal = $this->bcGoalRepository->update($input, $id);
 
         Flash::success('Backward Chaining Goal updated successfully.');
         return redirect(route('bcGoals.index'));
