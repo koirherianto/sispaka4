@@ -50,6 +50,7 @@ class BcEvidenceController extends AppBaseController
     {        
         $input = $request->all();
         $sessionProject = Auth::user()->session_project;
+        $currentProject = Project::find($sessionProject);
         
         $input['backward_chaining_id'] = $currentProject->backwardChaining->id;
 
