@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\BackwardChaining;
 
 use App\Models\BackwardChaining\BackwardChaining;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateBackwardChainingRequest extends FormRequest
+class UpdateBackwardChainingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,6 +24,8 @@ class CreateBackwardChainingRequest extends FormRequest
      */
     public function rules()
     {
-        return BackwardChaining::$rules;
+        $rules = BackwardChaining::$rules;
+        
+        return $rules;
     }
 }
