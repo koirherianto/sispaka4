@@ -1,4 +1,4 @@
-<!-- Backward Chaining Id Field -->
+
 <div class="col-sm-12">
     {!! Form::label('backward_chaining_id', 'Title') !!}
     <p>{{ $bcEvidence->backwardChaining->project->title }}</p>

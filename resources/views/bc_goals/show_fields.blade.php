@@ -1,7 +1,7 @@
-<!-- Backward Chaining Id Field -->
+
 <div class="col-sm-12">
-    {!! Form::label('backward_chaining_id', 'Backward Chaining Id:') !!}
-    <p>{{ $bcGoal->backward_chaining_id }}</p>
+    {!! Form::label('backward_chaining_id', 'Title') !!}
+    <p>{{ $bcGoal->backwardChaining->project->title }}</p>
 </div>
 
 <!-- Name Field -->

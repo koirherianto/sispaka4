@@ -16,7 +16,6 @@
         <table id="data-table" class="table table-striped table-centered align-middle table-nowrap mb-0 table-check">
             <thead>
             <tr>
-                <th>Backward Chaining Id</th>
                 <th>Name</th>
                 <th>Code Name</th>
                 <th>Reason</th>
@@ -27,7 +26,6 @@
             <tbody>
             @foreach($bcGoals as $bcGoal)
                 <tr>
-                    <td>{{ $bcGoal->backward_chaining_id }}</td>
                     <td>{{ $bcGoal->name }}</td>
                     <td>{{ $bcGoal->code_name }}</td>
                     <td>{{ $bcGoal->reason }}</td>
