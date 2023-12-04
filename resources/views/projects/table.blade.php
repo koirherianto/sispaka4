@@ -47,12 +47,15 @@
                                 <p class="mb-0"><i
                                         class="font-size-15 align-middle text-primary"></i>
                                     Status Publish : {{ $project->status_publish }}</p>
-                                <p class="mb-0 mt-2"><i
-                                        class="font-size-15 align-middle text-primary"></i>
-                                    DarleneSmith@spy.com</p>
-                                <p class="mb-0 mt-2"><i
-                                        class="font-size-15 align-middle text-primary"></i>
-                                    57 Guildry Street GAMRIE</p>
+                                <p class="mb-0 mt-2"><i class="font-size-15 align-middle text-primary"></i>
+                                    Name:
+                                    @foreach ($project->users as $user)
+                                    {{ $user->name }}
+                                    @endforeach
+                                </p>
+                                <p class="mb-0 mt-2"><i class="font-size-15 align-middle text-primary"></i>
+                                    Contributor:
+                                </p>
                             </div>
 
                             <div class="d-flex gap-2 pt-4">
