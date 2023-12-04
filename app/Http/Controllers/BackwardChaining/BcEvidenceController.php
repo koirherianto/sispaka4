@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Flash;
 use Response;
 use App\Models\Project;
+use App\Models\BackwardChaining\BackwardChaining;
 use App\Models\BackwardChaining\BcEvidence;
 
 class BcEvidenceController extends AppBaseController

@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\BackwardChaining;
+use App\Models\BackwardChaining\BackwardChaining;
 use App\Repositories\BaseRepository;
 
 class BackwardChainingRepository extends BaseRepository

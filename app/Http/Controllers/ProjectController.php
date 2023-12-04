@@ -7,7 +7,7 @@ use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\ProjectRepository;
 use Illuminate\Http\Request;
-use App\Models\BackwardChaining;
+use App\Models\BackwardChaining\BackwardChaining;
 use App\Models\Project;
 use App\Models\Method;
 use App\Models\User;
