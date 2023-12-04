@@ -338,3 +338,12 @@
     @endcan
 @endif
 
+
+@can('bcGoal.index')
+<li>
+    <a href="{{ route('bcGoals.index') }}">
+        <i class="bx bx-home-alt icon nav-icon"></i>
+        <span class="menu-item">Bc Goals</span>
+        </a>
+</li>
+@endcan
