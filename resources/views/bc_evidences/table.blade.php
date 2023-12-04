@@ -2,7 +2,7 @@
     <div class="card-body">
         <div class="d-flex flex-wrap align-items-center mb-2">
             <h5 class="card-title">
-                Bc Evidences 
+                Backward Chaining Evidences {{ $currentProject->title }}
             </h5>
         <div class="ms-auto">
             <div class="dropdown">
@@ -16,7 +16,6 @@
         <table id="data-table" class="table table-striped table-centered align-middle table-nowrap mb-0 table-check">
             <thead>
             <tr>
-                <th>Backward Chaining Id</th>
                 <th>Name</th>
                 <th>Code Name</th>
                 <th colspan="3">Action</th>
@@ -25,7 +24,6 @@
             <tbody>
             @foreach($bcEvidences as $bcEvidence)
                 <tr>
-                    <td>{{ $bcEvidence->backward_chaining_id }}</td>
                     <td>{{ $bcEvidence->name }}</td>
                     <td>{{ $bcEvidence->code_name }}</td>
                     <td style="width: 120px">

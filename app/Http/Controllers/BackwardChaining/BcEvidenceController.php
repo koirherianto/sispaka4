@@ -31,28 +31,31 @@ class BcEvidenceController extends AppBaseController
     {
         $user = Auth::user();
         $sessionProject = $user->session_project;
-        $project = Project::find($sessionProject);
+        $currentProject = Project::find($sessionProject);
 
-        $bcEvidences = $project->backwardChaining->bcEvidences()?->orderBy('created_at', 'desc')?->paginate(10);
+        $bcEvidences = $currentProject->backwardChaining->bcEvidences()?->orderBy('created_at', 'desc')?->paginate(10);
 
-        return view('bc_evidences.index')->with('bcEvidences', $bcEvidences);
+        return view('bc_evidences.index', compact('bcEvidences', 'currentProject'));
     }
 
     public function create()
-    {
-        return view('bc_evidences.create');
+    {   
+        $isCreatePage = true;
+        $currentProject = Project::find(Auth::user()->session_project);
+
+        return view('bc_evidences.create', compact('isCreatePage', 'currentProject'));
     }
 
     public function store(CreateBcEvidenceRequest $request)
-    {
+    {        
         $input = $request->all();
         $sessionProject = Auth::user()->session_project;
-
-        $input['backward_chaining_id'] = Project::find($sessionProject)->backwardChaining->id;
+        
+        $input['backward_chaining_id'] = $currentProject->backwardChaining->id;
 
         $bcEvidence = $this->bcEvidenceRepository->create($input);
 
-        Flash::success('Bc Evidence saved successfully.');
+        Flash::success('Backward Chaining Evidence saved successfully.');
         return redirect(route('bcEvidences.index'));
     }
 
@@ -61,7 +64,7 @@ class BcEvidenceController extends AppBaseController
         $bcEvidence = $this->bcEvidenceRepository->find($id);
         
         if (empty($bcEvidence)) {
-            Flash::error('Bc Evidence not found');
+            Flash::error('Backward Chaining Evidence not found');
             return redirect(route('bcEvidences.index'));
         }
 
@@ -73,7 +76,7 @@ class BcEvidenceController extends AppBaseController
         $bcEvidence = $this->bcEvidenceRepository->find($id);
 
         if (empty($bcEvidence)) {
-            Flash::error('Bc Evidence not found');
+            Flash::error('Backward Chaining Evidence not found');
             return redirect(route('bcEvidences.index'));
         }
 
@@ -85,13 +88,16 @@ class BcEvidenceController extends AppBaseController
         $bcEvidence = $this->bcEvidenceRepository->find($id);
 
         if (empty($bcEvidence)) {
-            Flash::error('Bc Evidence not found');
+            Flash::error('Backward Chaining Evidence not found');
             return redirect(route('bcEvidences.index'));
         }
 
-        $bcEvidence = $this->bcEvidenceRepository->update($request->all(), $id);
+        $input = $request->all();
+        unset($input['backward_chaining_id']);
 
-        Flash::success('Bc Evidence updated successfully.');
+        $bcEvidence = $this->bcEvidenceRepository->update($input, $id);
+
+        Flash::success('Backward Chaining Evidence updated successfully.');
         return redirect(route('bcEvidences.index'));
     }
 
@@ -105,13 +111,13 @@ class BcEvidenceController extends AppBaseController
         $bcEvidence = $this->bcEvidenceRepository->find($id);
 
         if (empty($bcEvidence)) {
-            Flash::error('Bc Evidence not found');
+            Flash::error('Backward Chaining Evidence not found');
             return redirect(route('bcEvidences.index'));
         }
 
         $this->bcEvidenceRepository->delete($id);
 
-        Flash::success('Bc Evidence deleted successfully.');
+        Flash::success('Backward Chaining Evidence deleted successfully.');
         return redirect(route('bcEvidences.index'));
     }
 }
