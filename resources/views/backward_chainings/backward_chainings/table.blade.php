@@ -17,14 +17,20 @@
             <thead>
             <tr>
                 <th>Project Id</th>
-                <th colspan="3">Action</th>
+                <th>Project Name</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+                {{-- <th colspan="3">Action</th> --}}
                 </tr>
             </thead>
             <tbody>
             @foreach($backwardChainings as $backwardChaining)
                 <tr>
                     <td>{{ $backwardChaining->project_id }}</td>
-                    <td style="width: 120px">
+                    <td>{{ $backwardChaining->project->title}}</td>
+                    <td>{{ $backwardChaining->project->created_at}}</td>
+                    <td>{{ $backwardChaining->project->updated_at}}</td>
+                    {{-- <td style="width: 120px">
                         {!! Form::open(['route' => ['backwardChainings.destroy', $backwardChaining->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
                             @can('backwardChaining.index')
@@ -42,7 +48,7 @@
                             @endcan
                         </div>
                         {!! Form::close() !!}
-                    </td>
+                    </td> --}}
                 </tr>
             @endforeach
             </tbody>
