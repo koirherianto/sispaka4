@@ -31,7 +31,7 @@ class BcGoalController extends AppBaseController
         $currentProject = Project::find(Auth::user()->session_project);
         $bcGoals = $currentProject->backwardChaining->bcGoals()->orderBy('created_at', 'desc')?->paginate(10);
 
-        return view('backward_chainings.bc_goals.index')->with('bcGoals', $bcGoals);
+        return view('backward_chainings.bc_goals.index', compact('bcGoals', 'currentProject'));
     }
 
     public function create()
