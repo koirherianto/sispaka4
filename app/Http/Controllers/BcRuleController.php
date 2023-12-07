@@ -53,7 +53,7 @@ class BcRuleController extends AppBaseController
         return view('bc_rules.index', compact('bcRules', 'dataRelasi'));
     }
 
-    function getDataRelasi() : array {
+    private function getDataRelasi() : array {
         $currentProject = Project::find(Auth::user()->session_project);
         $backwardChaining = $currentProject->backwardChaining;
 
@@ -92,6 +92,13 @@ class BcRuleController extends AppBaseController
     {
         $input = $request->all();
 
+        // cek apakah di bc rule ada memiliki relasi dengan bc goal dan bc evidence yang sama
+        $isSameExist = BcRule::where('bc_goal_id', $input['bc_goal_id'])->where('bc_evidence_id', $input['bc_evidence_id']);
+        if ($isSameExist->count() > 0) {
+            Flash::error('Rule already exist.');
+            return redirect(route('bcRules.index'));
+        }
+
         $bcRule = $this->bcRuleRepository->create($input);
 
         Flash::success('Bc Rule saved successfully.');
@@ -125,7 +132,12 @@ class BcRuleController extends AppBaseController
             return redirect(route('bcRules.index'));
         }
 
-        return view('bc_rules.edit')->with('bcRule', $bcRule);
+        $currentProject = Project::find(Auth::user()->session_project);
+        $backwardChaining = $currentProject->backwardChaining;
+        $bcGoals = $backwardChaining->bcGoals->pluck('name', 'id');
+        $bcEvidences = $backwardChaining->bcEvidences->pluck('name', 'id');
+
+        return view('bc_rules.edit', compact('bcRule', 'bcGoals', 'bcEvidences'));
     }
 
     /**
@@ -140,7 +152,20 @@ class BcRuleController extends AppBaseController
             return redirect(route('bcRules.index'));
         }
 
-        $bcRule = $this->bcRuleRepository->update($request->all(), $id);
+        $input = $request->all();
+
+        // Check if there's a duplicate rule with the same bc_goal_id and bc_evidence_id after update
+        $duplicateRule = BcRule::where('bc_goal_id', $input['bc_goal_id'])
+            ->where('bc_evidence_id', $input['bc_evidence_id'])
+            ->where('id', '!=', $id)
+            ->first();
+
+        if ($duplicateRule) {
+            Flash::error('Rule with the same goal and evidence already exists.');
+            return redirect(route('bcRules.index'));
+        }
+
+        $bcRule = $this->bcRuleRepository->update($input, $id);
 
         Flash::success('Bc Rule updated successfully.');
         return redirect(route('bcRules.index'));
