@@ -1,12 +1,11 @@
 @extends('layouts.master')
 
 @section('title')
-        Bc Evidence Details
-    @endsection
+    Backward Chaining Evidences / Facts Details
+@endsection
 
-@section('page-title')
-    
-    Bc Evidence Details
+@section('page-title')   
+    Backward Chaining Evidences / Facts Details
 @endsection
 
 @section('body')
