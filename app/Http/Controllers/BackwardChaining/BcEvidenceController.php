@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Flash;
 use Response;
+use DB;
 use App\Models\Project;
 use App\Models\BackwardChaining\BackwardChaining;
 use App\Models\BackwardChaining\BcEvidence;
@@ -115,7 +116,11 @@ class BcEvidenceController extends AppBaseController
             return redirect(route('bcEvidences.index'));
         }
 
-        $this->bcEvidenceRepository->delete($id);
+        // DB::transaction(function () use($bcEvidence,$id) {
+        //     $bcEvidence->bcRules->each->delete();
+        //     $this->bcEvidenceRepository->delete($id);
+        // },3);
+
 
         Flash::success('Backward Chaining Evidence deleted successfully.');
         return redirect(route('bcEvidences.index'));
