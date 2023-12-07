@@ -321,6 +321,17 @@
     </li>
 @endcan
 
+@if(Auth::user()->session_project != null)
+    @can('project.index')
+    <li>
+        <a href="{{ route('projects.edit', Auth::user()->session_project) }}">
+            <i class="bx bx-home-alt icon nav-icon"></i>
+            <span class="menu-item">Projects Setting</span>
+        </a>
+    </li>
+    @endcan
+@endif
+
 @if (Auth::user()->sessionProjecthasBackwardChainingMethod())
     <li class="menu-title">Backward Chaining</li>
     @can('backwardChaining.index')
@@ -340,22 +351,22 @@
             </a>
         </li>
     @endcan
+
+    @can('bcGoal.index')
+        <li>
+            <a href="{{ route('bcGoals.index') }}">
+                <i class="bx bx-home-alt icon nav-icon"></i>
+                <span class="menu-item">Goals</span>
+            </a>
+        </li>
+    @endcan
+
+    @can('bcRule.index')
+        <li>
+            <a href="{{ route('bcRules.index') }}">
+                <i class="bx bx-home-alt icon nav-icon"></i>
+                <span class="menu-item">Rules</span>
+            </a>
+        </li>
+    @endcan
 @endif
-
-@can('bcGoal.index')
-    <li>
-        <a href="{{ route('bcGoals.index') }}">
-            <i class="bx bx-home-alt icon nav-icon"></i>
-            <span class="menu-item">Goals</span>
-        </a>
-    </li>
-@endcan
-
-@can('bcRule.index')
-    <li>
-        <a href="{{ route('bcRules.index') }}">
-            <i class="bx bx-home-alt icon nav-icon"></i>
-            <span class="menu-item">Rules</span>
-        </a>
-    </li>
-@endcan

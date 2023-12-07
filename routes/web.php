@@ -37,8 +37,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('backwardChainings', App\Http\Controllers\BackwardChaining\BackwardChainingController::class);
         Route::resource('bcEvidences', App\Http\Controllers\BackwardChaining\BcEvidenceController::class);
         Route::resource('bcGoals', App\Http\Controllers\BackwardChaining\BcGoalController::class);
+        Route::resource('bcRules', App\Http\Controllers\BcRuleController::class);
     });
-    Route::resource('bcRules', App\Http\Controllers\BcRuleController::class);
 });
 
 
