@@ -7,7 +7,7 @@
         <div class="ms-auto">
             <div class="dropdown">
                 @can('bcEvidence.index')
-                <a href="{{ route('bcEvidences.create') }}" class="btn btn-primary float-right"> Tambah Data </a>
+                <a href="{{ route('bcEvidences.create') }}" class="btn btn-primary float-right"> Add Evidences </a>
                 @endcan
             </div>
         </div>

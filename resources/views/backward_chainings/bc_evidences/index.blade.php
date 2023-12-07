@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('page-title')
-    Backward Chaining Evidences / Facts
+    Backward Chaining | Evidences / Facts
 @endsection
 
 @section('title')
-    Backward Chaining Evidences / Facts
+    Backward Chaining | Evidences / Facts
 @endsection
 
 @section('css')

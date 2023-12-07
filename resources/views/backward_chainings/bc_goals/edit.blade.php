@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('title')
-    Edit Bc Goal
+    Edit Backward Chaining Goal
 @endsection
 
 @section('page-title')
-    Edit Bc Goal
+    Edit Backward Chaining Goal
 @endsection
 
 @section('body')

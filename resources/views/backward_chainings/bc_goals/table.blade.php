@@ -2,12 +2,12 @@
     <div class="card-body">
         <div class="d-flex flex-wrap align-items-center mb-2">
             <h5 class="card-title">
-                Bc Goals 
+                Goals | {{ $currentProject->title }}
             </h5>
         <div class="ms-auto">
             <div class="dropdown">
                 @can('bcGoal.index')
-                <a href="{{ route('bcGoals.create') }}" class="btn btn-primary float-right"> Tambah Data </a>
+                <a href="{{ route('bcGoals.create') }}" class="btn btn-primary float-right"> Add Goal</a>
                 @endcan
             </div>
         </div>
