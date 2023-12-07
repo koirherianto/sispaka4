@@ -342,7 +342,6 @@
     @endcan
 @endif
 
-
 @can('bcGoal.index')
     <li>
         <a href="{{ route('bcGoals.index') }}">
@@ -353,10 +352,10 @@
 @endcan
 
 @can('bcRule.index')
-<li>
-    <a href="{{ route('bcRules.index') }}">
-        <i class="bx bx-home-alt icon nav-icon"></i>
-        <span class="menu-item">Bc Rules</span>
+    <li>
+        <a href="{{ route('bcRules.index') }}">
+            <i class="bx bx-home-alt icon nav-icon"></i>
+            <span class="menu-item">Rules</span>
         </a>
-</li>
+    </li>
 @endcan

@@ -1,12 +1,11 @@
 @extends('layouts.master')
 
 @section('title')
-        Edit Bc Rule
-    @endsection
+    Edit Backward Chaining Rule
+@endsection
 
 @section('page-title')
-    
-    Edit Bc Rule
+    Edit Backward Chaining Rule
 @endsection
 
 @section('body')
