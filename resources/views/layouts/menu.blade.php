@@ -274,7 +274,7 @@
     </ul>
 </li> --}}
 
-<li class="menu-title" >Admin</li>
+<li class="menu-title">Admin</li>
 
 <li>
     <a href="{{ route('users.index') }}">
@@ -298,52 +298,52 @@
 </li>
 
 @can('method.index')
-<li>
-    <a href="{{ route('methods.index') }}">
-        <i class="bx bx-home-alt icon nav-icon"></i>
-        <span class="menu-item">Methods</span>
+    <li>
+        <a href="{{ route('methods.index') }}">
+            <i class="bx bx-home-alt icon nav-icon"></i>
+            <span class="menu-item">Methods</span>
         </a>
-</li>
+    </li>
 @endcan
 
 <li class="menu-title">User</li>
 
 
 @can('project.index')
-<li>
-    <a href="{{ route('projects.index') }}">
-        <i class="bx bx-home-alt icon nav-icon"></i>
-        <span class="menu-item">Projects</span>
+    <li>
+        <a href="{{ route('projects.index') }}">
+            <i class="bx bx-home-alt icon nav-icon"></i>
+            <span class="menu-item">Projects</span>
         </a>
-</li>
+    </li>
 @endcan
 
 @if (Auth::user()->sessionProjecthasBackwardChainingMethod())
     @can('backwardChaining.index')
-    <li>
-        <a href="{{ route('backwardChainings.index') }}">
-            <i class="bx bx-home-alt icon nav-icon"></i>
-            <span class="menu-item">Backward Chainings</span>
+        <li>
+            <a href="{{ route('backwardChainings.index') }}">
+                <i class="bx bx-home-alt icon nav-icon"></i>
+                <span class="menu-item">Backward Chainings</span>
             </a>
-    </li>
+        </li>
     @endcan
 
     @can('bcEvidence.index')
-    <li>
-        <a href="{{ route('bcEvidences.index') }}">
-            <i class="bx bx-home-alt icon nav-icon"></i>
-            <span class="menu-item">Bc Evidences</span>
+        <li>
+            <a href="{{ route('bcEvidences.index') }}">
+                <i class="bx bx-home-alt icon nav-icon"></i>
+                <span class="menu-item">Evidences / Facts</span>
             </a>
-    </li>
+        </li>
     @endcan
 @endif
 
 
 @can('bcGoal.index')
-<li>
-    <a href="{{ route('bcGoals.index') }}">
-        <i class="bx bx-home-alt icon nav-icon"></i>
-        <span class="menu-item">Bc Goals</span>
+    <li>
+        <a href="{{ route('bcGoals.index') }}">
+            <i class="bx bx-home-alt icon nav-icon"></i>
+            <span class="menu-item">Goals</span>
         </a>
-</li>
+    </li>
 @endcan
