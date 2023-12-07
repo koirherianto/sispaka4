@@ -1,11 +1,10 @@
 @extends('layouts.master')
 
 @section('title')
-        Edit Project
-    @endsection
+    Edit Project
+@endsection
 
 @section('page-title')
-    
     Edit Project
 @endsection
 
@@ -27,9 +26,19 @@
             </div>
         </div>
 
-        <div class="card-footer">
-            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-            <a href="{{ route('projects.index') }}" class="btn btn-default"> Cancel </a>
+        <div class="card-footer d-flex justify-content-between">
+            <div>
+                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                <a href="{{ route('projects.index') }}" class="btn btn-default"> Cancel </a>
+            </div>
+            <div>
+                <!-- Tambahkan tombol baru di sini -->
+                @can('project.destroy')
+                {!! Form::open(['route' => ['projects.destroy', $project->id], 'method' => 'delete']) !!}
+                    {!! Form::button('Delete Project', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                {!! Form::close() !!}
+                @endcan
+            </div>
         </div>
 
         {!! Form::close() !!}

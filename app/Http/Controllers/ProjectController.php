@@ -157,6 +157,7 @@ class ProjectController extends AppBaseController
      */
     public function destroy($id)
     {
+        return 'svds';
         $project = $this->projectRepository->find($id);
 
         if (empty($project)) {

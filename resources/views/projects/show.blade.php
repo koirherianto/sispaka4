@@ -1,11 +1,10 @@
 @extends('layouts.master')
 
 @section('title')
-        Project Details
-    @endsection
+    Project Details
+@endsection
 
 @section('page-title')
-    
     Project Details
 @endsection
 
