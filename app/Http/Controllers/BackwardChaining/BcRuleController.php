@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BackwardChaining;
 
-use App\Http\Requests\CreateBcRuleRequest;
-use App\Http\Requests\UpdateBcRuleRequest;
+use App\Http\Requests\BackwardChaining\CreateBcRuleRequest;
+use App\Http\Requests\BackwardChaining\UpdateBcRuleRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\BcRuleRepository;
 use Illuminate\Http\Request;
 use App\Models\Project;
-use App\Models\BcRule;
+use App\Models\BackwardChaining\BcRule;
 use App\Models\BackwardChaining\BcGoal;
 use App\Models\BackwardChaining\BcEvidence;
 use Auth;
@@ -50,7 +50,7 @@ class BcRuleController extends AppBaseController
 
         $dataRelasi =  $this->getDataRelasi();
 
-        return view('bc_rules.index', compact('bcRules', 'dataRelasi'));
+        return view('backward_chainings.bc_rules.index', compact('bcRules', 'dataRelasi'));
     }
 
     private function getDataRelasi() : array {
@@ -82,7 +82,7 @@ class BcRuleController extends AppBaseController
         $bcGoals = $backwardChaining->bcGoals->pluck('name', 'id');
         $bcEvidences = $backwardChaining->bcEvidences->pluck('name', 'id');
 
-        return view('bc_rules.create', compact('bcGoals', 'bcEvidences'));
+        return view('backward_chainings.bc_rules.create', compact('bcGoals', 'bcEvidences'));
     }
 
     /**
@@ -117,7 +117,7 @@ class BcRuleController extends AppBaseController
             return redirect(route('bcRules.index'));
         }
 
-        return view('bc_rules.show')->with('bcRule', $bcRule);
+        return view('backward_chainings.bc_rules.show')->with('bcRule', $bcRule);
     }
 
     /**
@@ -137,7 +137,7 @@ class BcRuleController extends AppBaseController
         $bcGoals = $backwardChaining->bcGoals->pluck('name', 'id');
         $bcEvidences = $backwardChaining->bcEvidences->pluck('name', 'id');
 
-        return view('bc_rules.edit', compact('bcRule', 'bcGoals', 'bcEvidences'));
+        return view('backward_chainings.bc_rules.edit', compact('bcRule', 'bcGoals', 'bcEvidences'));
     }
 
     /**

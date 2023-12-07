@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('title')
-    Edit Backward Chaining Rule
+    Create Backward Chaining Rules
 @endsection
 
-@section('page-title')
-    Edit Backward Chaining Rule
+@section('page-title') 
+    Create Backward Chaining Rules
 @endsection
 
 @section('body')
@@ -18,12 +18,14 @@
 
     <div class="card">
 
-        {!! Form::model($bcRule, ['route' => ['bcRules.update', $bcRule->id], 'method' => 'patch']) !!}
+        {!! Form::open(['route' => 'bcRules.store']) !!}
 
         <div class="card-body">
+
             <div class="row">
-                @include('bc_rules.fields')
+                @include('backward_chainings.bc_rules.fields')
             </div>
+
         </div>
 
         <div class="card-footer">
@@ -46,4 +48,4 @@
     <script src="{{ URL::asset('build/js/app.js') }}"></script>
     
 @endsection
-        
+    

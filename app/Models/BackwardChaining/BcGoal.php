@@ -41,6 +41,6 @@ class BcGoal extends Model
 
     public function bcRules(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(\App\Models\BcRule::class, 'bc_goal_id');
+        return $this->hasMany(\App\Models\BackwardChaining\BcRule::class, 'bc_goal_id');
     }
 }

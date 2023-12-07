@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\BackwardChaining;
 
-use App\Models\BcRule;
+use App\Models\BackwardChaining\BcRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateBcRuleRequest extends FormRequest

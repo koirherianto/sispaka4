@@ -21,7 +21,7 @@
 
 @section('content')
     @include('flash::message')
-    @include('bc_rules.table')
+    @include('backward_chainings.bc_rules.table')
 @endsection
 
 @section('scripts')
