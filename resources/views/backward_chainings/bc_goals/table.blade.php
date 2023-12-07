@@ -18,8 +18,6 @@
             <tr>
                 <th>Name</th>
                 <th>Code Name</th>
-                <th>Reason</th>
-                <th>Solution</th>
                 <th colspan="3">Action</th>
                 </tr>
             </thead>
@@ -28,8 +26,6 @@
                 <tr>
                     <td>{{ $bcGoal->name }}</td>
                     <td>{{ $bcGoal->code_name }}</td>
-                    <td>{{ $bcGoal->reason }}</td>
-                    <td>{{ $bcGoal->solution }}</td>
                     <td style="width: 120px">
                         {!! Form::open(['route' => ['bcGoals.destroy', $bcGoal->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>

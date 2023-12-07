@@ -9,6 +9,8 @@ use App\Repositories\BcRuleRepository;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\BcRule;
+use App\Models\BackwardChaining\BcGoal;
+use App\Models\BackwardChaining\BcEvidence;
 use Auth;
 use Flash;
 
@@ -46,7 +48,31 @@ class BcRuleController extends AppBaseController
             })
             ->paginate(10);
 
-        return view('bc_rules.index')->with('bcRules', $bcRules);
+        $dataRelasi =  $this->getDataRelasi();
+
+        return view('bc_rules.index', compact('bcRules', 'dataRelasi'));
+    }
+
+    function getDataRelasi() : array {
+        $currentProject = Project::find(Auth::user()->session_project);
+        $backwardChaining = $currentProject->backwardChaining;
+
+        $bcGoals = BcGoal::where('backward_chaining_id',$backwardChaining->id)->get();
+        $dataRelasi = [];
+        
+        foreach ($bcGoals as $bcGoal) {
+            $bcEvidenceCodes = '';
+            foreach ($bcGoal->bcRules as $bcRules) {
+                    $bcEvidenceCodes .= $bcRules->bcEvidence->code_name . ', ';
+            }
+            
+            $dataRelasi[] = [
+                'evidenceCodes' => $bcEvidenceCodes,    
+                'goalCodes' => $bcGoal->code_name
+            ];
+        }
+
+        return $dataRelasi;
     }
 
     public function create()
