@@ -308,6 +308,9 @@
 
 <li class="menu-title">User</li>
 
+{{-- menu pengaturan --}}
+{{-- menu colaborator --}}
+{{-- menu contributor --}}
 
 @can('project.index')
     <li>
@@ -319,6 +322,7 @@
 @endcan
 
 @if (Auth::user()->sessionProjecthasBackwardChainingMethod())
+    <li class="menu-title">Backward Chaining</li>
     @can('backwardChaining.index')
         <li>
             <a href="{{ route('backwardChainings.index') }}">
