@@ -5,12 +5,9 @@ use App\Http\Controllers\UserController;
 
 
 Route::get('/', function () {
-    return view('landing.index');
+    return view('landing.index2');
 });
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 // Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 Auth::routes();
