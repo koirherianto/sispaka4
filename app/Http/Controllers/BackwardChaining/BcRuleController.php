@@ -79,8 +79,20 @@ class BcRuleController extends AppBaseController
     {
         $currentProject = Project::find(Auth::user()->session_project);
         $backwardChaining = $currentProject->backwardChaining;
-        $bcGoals = $backwardChaining->bcGoals->pluck('name', 'id');
-        $bcEvidences = $backwardChaining->bcEvidences->pluck('name', 'id');
+        $bcGoals = $backwardChaining->bcGoals->map(function ($goal) {
+            return [
+                'id' => $goal->id,
+                'name' => $goal->name . ' - ' . $goal->code_name,
+            ];
+        })->pluck('name', 'id');
+        
+        $bcEvidences = $backwardChaining->bcEvidences->map(function ($evidence) {
+            return [
+                'id' => $evidence->id,
+                'name' => $evidence->name . ' - ' . $evidence->code_name,
+            ];
+        })->pluck('name', 'id');
+        
 
         return view('backward_chainings.bc_rules.create', compact('bcGoals', 'bcEvidences'));
     }

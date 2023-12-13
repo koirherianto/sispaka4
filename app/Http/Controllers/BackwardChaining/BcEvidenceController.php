@@ -116,10 +116,10 @@ class BcEvidenceController extends AppBaseController
             return redirect(route('bcEvidences.index'));
         }
 
-        // DB::transaction(function () use($bcEvidence,$id) {
-        //     $bcEvidence->bcRules->each->delete();
-        //     $this->bcEvidenceRepository->delete($id);
-        // },3);
+        DB::transaction(function () use($bcEvidence,$id) {
+            $bcEvidence->bcRules->each->delete();
+            $this->bcEvidenceRepository->delete($id);
+        },3);
 
 
         Flash::success('Backward Chaining Evidence deleted successfully.');

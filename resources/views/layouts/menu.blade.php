@@ -326,7 +326,7 @@
     <li>
         <a href="{{ route('projects.edit', Auth::user()->session_project) }}">
             <i class="bx bx-home-alt icon nav-icon"></i>
-            <span class="menu-item">Projects Setting</span>
+            <span class="menu-item">Project Setting</span>
         </a>
     </li>
     @endcan
@@ -356,7 +356,7 @@
         <li>
             <a href="{{ route('bcGoals.index') }}">
                 <i class="bx bx-home-alt icon nav-icon"></i>
-                <span class="menu-item">Goals</span>
+                <span class="menu-item">Goals / Results</span>
             </a>
         </li>
     @endcan
@@ -366,6 +366,15 @@
             <a href="{{ route('bcRules.index') }}">
                 <i class="bx bx-home-alt icon nav-icon"></i>
                 <span class="menu-item">Rules</span>
+            </a>
+        </li>
+    @endcan
+
+    @can('bcRule.index')
+        <li>
+            <a href="{{ route('bcTry.selectGoals') }}">
+                <i class="bx bx-home-alt icon nav-icon"></i>
+                <span class="menu-item">Try / Experiment</span>
             </a>
         </li>
     @endcan

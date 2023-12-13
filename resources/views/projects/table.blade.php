@@ -28,10 +28,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex align-items-center">
-                                <div>
-                                    <img src="{{ URL::asset('build/images/users/avatar-3.jpg') }}" alt="" class="avatar-md rounded-circle img-thumbnail">
-                                </div>
-                                <div class="flex-1 ms-3">
+                                <div class="flex-1 ms-0">
                                     <h5 class="font-size-16 mb-1"><a href="#" class="text-dark">{{ $project->title }}</a></h5>
                                     <span class="badge badge-soft-danger mb-0">
                                         @foreach ($project->methods as $method)

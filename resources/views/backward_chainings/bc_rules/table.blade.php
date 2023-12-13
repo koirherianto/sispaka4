@@ -4,19 +4,17 @@
             <h5 class="card-title">
                 Backward Chaining Rules
             </h5>
-            <div class="ms-auto">
-                <div class="dropdown">
-                    @can('bcRule.index')
-                        <a href="{{ route('bcRules.create') }}" class="btn btn-primary float-right"> Add Rule </a>
-                    @endcan
-                </div>
-            </div>
         </div>
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-10">
+                <div class="d-flex justify-content-between mb-2">
+                    <h5 class="card-title"></h5>
+                    @can('bcRule.index')
+                        <a href="{{ route('bcRules.create') }}" class="btn btn-primary">Add Rule</a>
+                    @endcan
+                </div>
                 <div class="table-responsive">
-                    <table id="data-table"
-                        class="table table-striped table-centered align-middle table-nowrap mb-0 table-check">
+                    <table id="data-table" class="table table-striped table-centered align-middle table-nowrap mb-0 table-check">
                         <thead>
                             <tr>
                                 {{-- <th>Goal Code</th> --}}
@@ -61,25 +59,31 @@
                         </tbody>
                     </table>
                 </div>
-            </div> {{-- col --}}
-            {{-- <div class="col-sm-4">
+            </div>
+            
+            <div class="col-sm-2">
+                <div class="d-flex justify-content-between mb-2">
+                    <h5 class="card-title"></h5>
+                    @can('bcRule.index')
+                        <a href="{{ route('bcRules.create') }}" class="btn btn-primary">Add Code Rule</a>
+                    @endcan
+                </div>
                 <table class="table table-striped table-centered align-middle table-nowrap mb-0 table-check">
                     <thead>
                         <tr>
-                            <th scope="col">Code Goal</th>
-                            <th scope="col">Code Evidence</th>
+                            <th scope="col">Code Rule</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($dataRelasi as $relasi)
                         <tr>
                             <td>{{ $relasi['goalCodes'] }}</td>
-                            <td>{{ $relasi['evidenceCodes'] }}</td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-            </div> --}}
+            </div>
+            
         </div> {{-- end row --}}
 
     </div>
@@ -89,4 +93,34 @@
             @include('adminlte-templates::common.paginate', ['records' => $bcRules])
         </div>
     </div>
+    
+</div>
+
+
+<div class="card">
+<div class="card-body">
+    <div class="d-flex flex-wrap align-items-center mb-2">
+        <h5 class="card-title">
+            Connection Rules
+        </h5>
+    </div>
+    <div class="table-responsive">
+    <table class="table table-striped table-centered align-middle table-nowrap mb-0 table-check">
+        <thead>
+            <tr>
+                <th scope="col">Code Goal</th>
+                <th scope="col">Code Evidence</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($dataRelasi as $relasi)
+            <tr>
+                <td>{{ $relasi['goalCodes'] }}</td>
+                <td>{{ $relasi['evidenceCodes'] }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+    </div>
+</div>
 </div>

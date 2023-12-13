@@ -23,6 +23,7 @@ class User extends Authenticatable implements HasMedia
         'name',
         'email',
         'email_verified_at',
+        'session_project',
         'password',
         'remember_token'
     ];
