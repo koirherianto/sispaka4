@@ -50,6 +50,7 @@
                         </div>
                         <p class="note">*Only relevant information, no spam</p>
                     </form>
+
                     <!--end form-->
                 </div>
                 <!--end col-md-10-->
@@ -81,8 +82,12 @@
         </div>
         <!--end social-icons-->
     </footer>
+    
 </div>
 <!--end page-wrapper-->
+
+<h1>sfd</h1>
+
 
 <!-- Modal About Us -->
 <div class="modal fade" id="modal-about-us" tabindex="-1" role="dialog" aria-labelledby="modal-about-us-label">
