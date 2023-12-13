@@ -11,17 +11,18 @@ class BcRule extends Model
     public $fillable = [
         'bc_goal_id',
         'bc_evidence_id',
-        'code_name'
+        'bc_rule_code_id',
+        'optional_question'
     ];
 
     protected $casts = [
-        'code_name' => 'string'
+        'optional_question' => 'string'
     ];
 
     public static array $rules = [
         'bc_goal_id' => 'required',
         'bc_evidence_id' => 'required',
-        'code_name' => 'required|string|max:100',
+        'bc_rule_code_id' => 'required',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'
@@ -35,5 +36,10 @@ class BcRule extends Model
     public function bcGoal(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(\App\Models\BackwardChaining\BcGoal::class, 'bc_goal_id');
+    }
+
+    public function bcRuleCode(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(\App\Models\BackwardChaining\BcRuleCode::class, 'bc_rule_code_id');
     }
 }

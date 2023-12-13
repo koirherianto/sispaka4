@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BackwardChaining;
 
 use App\Http\Requests\CreateBcRuleCodeRequest;
 use App\Http\Requests\UpdateBcRuleCodeRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\BcRuleCodeRepository;
 use Illuminate\Http\Request;
+use App\Models\Project;
+use App\Models\BackwardChaining\BcRuleCode;
+use Auth;
 use Flash;
 
 class BcRuleCodeController extends AppBaseController
@@ -28,7 +31,9 @@ class BcRuleCodeController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $bcRuleCodes = $this->bcRuleCodeRepository->paginate(10);
+
+        $currentProject = Project::find(Auth::user()->session_project);
+        $bcRuleCodes = $currentProject->backwardChaining->bcRuleCodes()->paginate(10);
 
         return view('bc_rule_codes.index')->with('bcRuleCodes', $bcRuleCodes);
     }
@@ -48,10 +53,13 @@ class BcRuleCodeController extends AppBaseController
     {
         $input = $request->all();
 
+        $currentProject = Project::find(Auth::user()->session_project);
+        $input['backward_chaining_id'] =  $currentProject->backwardChaining->id;
+
         $bcRuleCode = $this->bcRuleCodeRepository->create($input);
 
-        Flash::success('Bc Rule Code saved successfully.');
-        return redirect(route('bcRuleCodes.index'));
+        Flash::success('Rule Code saved successfully.');
+        return redirect(route('bcRules.index'));
     }
 
     /**
@@ -62,7 +70,7 @@ class BcRuleCodeController extends AppBaseController
         $bcRuleCode = $this->bcRuleCodeRepository->find($id);
         
         if (empty($bcRuleCode)) {
-            Flash::error('Bc Rule Code not found');
+            Flash::error('Rule Code not found');
             return redirect(route('bcRuleCodes.index'));
         }
 
@@ -77,7 +85,7 @@ class BcRuleCodeController extends AppBaseController
         $bcRuleCode = $this->bcRuleCodeRepository->find($id);
 
         if (empty($bcRuleCode)) {
-            Flash::error('Bc Rule Code not found');
+            Flash::error('Rule Code not found');
             return redirect(route('bcRuleCodes.index'));
         }
 
@@ -92,13 +100,13 @@ class BcRuleCodeController extends AppBaseController
         $bcRuleCode = $this->bcRuleCodeRepository->find($id);
 
         if (empty($bcRuleCode)) {
-            Flash::error('Bc Rule Code not found');
+            Flash::error('Rule Code not found');
             return redirect(route('bcRuleCodes.index'));
         }
 
         $bcRuleCode = $this->bcRuleCodeRepository->update($request->all(), $id);
 
-        Flash::success('Bc Rule Code updated successfully.');
+        Flash::success('Rule Code updated successfully.');
         return redirect(route('bcRuleCodes.index'));
     }
 
@@ -112,13 +120,13 @@ class BcRuleCodeController extends AppBaseController
         $bcRuleCode = $this->bcRuleCodeRepository->find($id);
 
         if (empty($bcRuleCode)) {
-            Flash::error('Bc Rule Code not found');
+            Flash::error('Rule Code not found');
             return redirect(route('bcRuleCodes.index'));
         }
 
         $this->bcRuleCodeRepository->delete($id);
 
-        Flash::success('Bc Rule Code deleted successfully.');
+        Flash::success('Rule Code deleted successfully.');
         return redirect(route('bcRuleCodes.index'));
     }
 }

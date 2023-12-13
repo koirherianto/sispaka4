@@ -38,11 +38,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('bcEvidences', App\Http\Controllers\BackwardChaining\BcEvidenceController::class);
         Route::resource('bcGoals', App\Http\Controllers\BackwardChaining\BcGoalController::class);
         Route::resource('bcRules', App\Http\Controllers\BackwardChaining\BcRuleController::class);
+        Route::resource('bcRuleCodes', App\Http\Controllers\BackwardChaining\BcRuleCodeController::class);
         Route::get('bcTry/selectGoals', [App\Http\Controllers\BackwardChaining\BackwardChaningTryController::class, 'selectGoals'])->name('bcTry.selectGoals');
         Route::post('bcTry/selectEvidences', [App\Http\Controllers\BackwardChaining\BackwardChaningTryController::class, 'selectEvidences'])->name('bcTry.selectEvidences');
     });
 });
 
 
-
-Route::resource('bc-rule-codes', App\Http\Controllers\BcRuleCodeController::class);

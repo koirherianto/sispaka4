@@ -37,4 +37,10 @@ class BackwardChaining extends Model
     {
         return $this->hasMany(\App\Models\BackwardChaining\BcGoal::class, 'backward_chaining_id');
     }
+
+    public function bcRuleCodes(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\App\Models\BackwardChaining\BcRuleCode::class, 'backward_chaining_id');
+    }
+    
 }

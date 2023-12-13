@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\BackwardChaining;;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -27,11 +27,11 @@ class BcRuleCode extends Model
 
     public function backwardChaining(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(\App\Models\BackwardChaining::class, 'backward_chaining_id');
+        return $this->belongsTo(\App\Models\BackwardChaining\BackwardChaining::class, 'backward_chaining_id');
     }
 
     public function bcRules(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(\App\Models\BcRule::class, 'bc_rule_code_id');
+        return $this->hasMany(\App\Models\BackwardChaining\BcRule::class, 'bc_rule_code_id');
     }
 }

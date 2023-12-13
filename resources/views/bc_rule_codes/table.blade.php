@@ -18,7 +18,10 @@
             <tr>
                 <th>Backward Chaining Id</th>
                 <th>Code Name</th>
-                <th colspan="3">Action</th>
+                <th>Project Name</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+                {{-- <th colspan="3">Action</th> --}}
                 </tr>
             </thead>
             <tbody>
@@ -26,26 +29,10 @@
                 <tr>
                     <td>{{ $bcRuleCode->backward_chaining_id }}</td>
                     <td>{{ $bcRuleCode->code_name }}</td>
-                    <td style="width: 120px">
-                        {!! Form::open(['route' => ['bcRuleCodes.destroy', $bcRuleCode->id], 'method' => 'delete']) !!}
-                        <div class='btn-group'>
-                            @can('bcRuleCode.index')
-                            <a href="{{ route('bcRuleCodes.show', [$bcRuleCode->id]) }}" class='btn btn-primary btn-xs'>
-                                <i class="far fa-eye"></i>
-                            </a>
-                            @endcan
-                            @can('bcRuleCode.edit')
-                            <a href="{{ route('bcRuleCodes.edit', [$bcRuleCode->id]) }}" class='btn btn-warning btn-xs'>
-                                <i class="far fa-edit"></i>
-                            </a>
-                            @endcan
-                            @can('bcRuleCode.destroy')
-                            {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
-                            @endcan
-                        </div>
-                        {!! Form::close() !!}
-                    </td>
-                    <td>
+                    <td>{{ $bcRuleCode->backwardChaining->project->title }}</td>
+                    <td>{{ $bcRuleCode->created_at }}</td>
+                    <td>{{ $bcRuleCode->updated_at }}</td>
+                    {{-- <td>
                         <div class="dropdown">
                             <a class="text-muted dropdown-toggle font-size-18" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true">
@@ -59,7 +46,7 @@
                                 {!! Form::close() !!}
                             </div>
                         </div>
-                    </td>
+                    </td> --}}
                 </tr>
             @endforeach
             </tbody>

@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\BcRuleCode;
+use App\Models\BackwardChaining\BcRuleCode;
 use App\Repositories\BaseRepository;
 
 class BcRuleCodeRepository extends BaseRepository

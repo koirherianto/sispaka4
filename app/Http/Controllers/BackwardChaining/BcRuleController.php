@@ -9,6 +9,7 @@ use App\Repositories\BcRuleRepository;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\BackwardChaining\BcRule;
+use App\Models\BackwardChaining\BcRuleCode;
 use App\Models\BackwardChaining\BcGoal;
 use App\Models\BackwardChaining\BcEvidence;
 use Auth;
@@ -49,10 +50,19 @@ class BcRuleController extends AppBaseController
             ->paginate(10);
 
         $dataRelasi =  $this->getDataRelasi();
+        $bcRuleCodes = $this->indexRulesCode();
 
-        return view('backward_chainings.bc_rules.index', compact('bcRules', 'dataRelasi'));
+        return view('backward_chainings.bc_rules.index', compact('bcRules', 'dataRelasi', 'bcRuleCodes'));
     }
 
+    // nama rule / aturan backward chaining
+    private function indexRulesCode()
+    {
+        $currentProject = Project::find(Auth::user()->session_project);
+        return $bcRuleCodes = $currentProject->backwardChaining->bcRuleCodes()->get();
+    }
+
+    // relasi antara bc goal, bc edvidence, dan bc rule
     private function getDataRelasi() : array {
         $currentProject = Project::find(Auth::user()->session_project);
         $backwardChaining = $currentProject->backwardChaining;
@@ -78,7 +88,10 @@ class BcRuleController extends AppBaseController
     public function create()
     {
         $currentProject = Project::find(Auth::user()->session_project);
+        
         $backwardChaining = $currentProject->backwardChaining;
+    
+        $bcRuleCodes = $backwardChaining->bcRuleCodes->pluck('code_name', 'id');
         $bcGoals = $backwardChaining->bcGoals->map(function ($goal) {
             return [
                 'id' => $goal->id,
@@ -92,9 +105,8 @@ class BcRuleController extends AppBaseController
                 'name' => $evidence->name . ' - ' . $evidence->code_name,
             ];
         })->pluck('name', 'id');
-        
 
-        return view('backward_chainings.bc_rules.create', compact('bcGoals', 'bcEvidences'));
+        return view('backward_chainings.bc_rules.create', compact('bcGoals', 'bcEvidences','bcRuleCodes'));
     }
 
     /**

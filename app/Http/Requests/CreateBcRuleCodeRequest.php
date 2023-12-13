@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Models\BcRuleCode;
+use App\Models\BackwardChaining\BcRuleCode;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateBcRuleCodeRequest extends FormRequest

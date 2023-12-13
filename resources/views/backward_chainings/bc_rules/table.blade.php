@@ -65,7 +65,7 @@
                 <div class="d-flex justify-content-between mb-2">
                     <h5 class="card-title"></h5>
                     @can('bcRule.index')
-                        <a href="{{ route('bcRules.create') }}" class="btn btn-primary">Add Code Rule</a>
+                        <a href="{{ route('bcRuleCodes.create') }}" class="btn btn-primary">Add Code Rule</a>
                     @endcan
                 </div>
                 <table class="table table-striped table-centered align-middle table-nowrap mb-0 table-check">
@@ -76,9 +76,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($dataRelasi as $relasi)
+                        @foreach ($bcRuleCodes as $bcRuleCode)
                         <tr>
-                            <td>{{ $relasi['goalCodes'] }}</td>
+                            <td>{{ $bcRuleCode->code_name }}</td>
                             <td>...</td>
                         </tr>
                         @endforeach

@@ -20,11 +20,22 @@
     @enderror 
 </div>
 
+<!-- bc_rule_code_id Id Field -->
+<div class="form-group col-sm-6 mb-2">
+    {!! Form::label('bc_rule_code_id', 'Rule Code') !!}
+    {!! Form::select('bc_rule_code_id', $bcRuleCodes, null, ['class' => 'form-control', 'required']) !!}
+    @error('bc_rule_code_id') 
+        <span class="invalid-feedback d-block" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror 
+</div>
+
 <!-- Code Name Field -->
 <div class="form-group col-sm-6 mb-2">
-    {!! Form::label('code_name', 'Code Name:') !!}
-    {!! Form::text('code_name', null, ['class' => 'form-control', 'required', 'maxlength' => 100, 'maxlength' => 100]) !!}
-    @error('code_name') 
+    {!! Form::label('optional_question', 'Optional Question:') !!}
+    {!! Form::text('optional_question', null, ['class' => 'form-control', 'maxlength' => 255]) !!}
+    @error('optional_question') 
         <span class="invalid-feedback d-block" role="alert">
             <strong>{{ $message }}</strong>
         </span>

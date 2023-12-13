@@ -1,13 +1,4 @@
-<!-- Backward Chaining Id Field -->
-<div class="form-group col-sm-6 mb-2">
-    {!! Form::label('backward_chaining_id', 'Backward Chaining Id:') !!}
-    {!! Form::number('backward_chaining_id', null, ['class' => 'form-control', 'required']) !!}
-    @error('backward_chaining_id') 
-        <span class="invalid-feedback d-block" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror 
-</div>
+<input type="hidden" name="backward_chaining_id" value="-">
 
 <!-- Code Name Field -->
 <div class="form-group col-sm-6 mb-2">
