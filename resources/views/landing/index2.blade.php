@@ -15,6 +15,9 @@
 
     <title>CreaSoon - Creative Coming Soon Template</title>
 
+    {{-- beda template --}}
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('landing/css/style.css') }} ">
+
     <style>
         body { background-color: #f3f3f3; }
     </style>
@@ -31,6 +34,17 @@
                 <li><a href="" data-toggle="modal" data-target="#modal-our-works">Our Works</a></li>
                 <li><a href="" data-toggle="modal" data-target="#modal-services">Services</a></li>
                 <li><a href="" data-toggle="modal" data-target="#modal-contact-us">Contact</a></li>
+                @if (Route::has('login'))
+                @auth
+                        <li><a href="{{ url('/home') }}">Dashboard</a></li>
+                    @else
+                        <li><a href="{{ url('/login') }}">Login</a></li>
+                        
+                        @if (Route::has('register'))
+                            <li><a href="{{ url('/register') }}">Register</a></li>
+                        @endif
+                    @endauth
+                @endif
             </ul>
             <!--end navigation-->
         </nav>
@@ -86,7 +100,74 @@
 </div>
 <!--end page-wrapper-->
 
-<h1>sfd</h1>
+<div class="latest-news container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="row-title">
+                    Expert System Random
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="main-btn-holder">
+                    <a href="blog.html" class="hbtn hbtn-default">View more</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <div class="post-box blue-bg">
+                    <div class="post-img"></div>
+                    <span class="badge badge-danger">Hot</span>
+                    <div class="post-title">Discover our new website builder</div>
+                    <div class="post-link"><a href="#">Learn more</a></div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="post-box grey-bg">
+                    <div class="post-img"></div>
+                    <span class="badge badge-info">Hot</span>
+                    <div class="post-title">New Data center in Germany & USA</div>
+                    <div class="post-link"><a href="#">Learn more</a></div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div class="post-box yellow-bg">
+                    <div class="post-img"></div>
+                    <span class="badge badge-dark">Hot</span>
+                    <div class="post-title">Discover our newwebsite builder</div>
+                    <div class="post-link"><a href="#">Learn more</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <div class="post-box blue-bg">
+                    <div class="post-img"></div>
+                    <span class="badge badge-danger">Hot</span>
+                    <div class="post-title">Discover our new website builder</div>
+                    <div class="post-link"><a href="#">Learn more</a></div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="post-box grey-bg">
+                    <div class="post-img"></div>
+                    <span class="badge badge-info">Hot</span>
+                    <div class="post-title">New Data center in Germany & USA</div>
+                    <div class="post-link"><a href="#">Learn more</a></div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div class="post-box yellow-bg">
+                    <div class="post-img"></div>
+                    <span class="badge badge-dark">Hot</span>
+                    <div class="post-title">Discover our newwebsite builder</div>
+                    <div class="post-link"><a href="#">Learn more</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <!-- Modal About Us -->

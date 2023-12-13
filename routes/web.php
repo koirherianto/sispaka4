@@ -7,6 +7,9 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('landing.index2');
 });
+Route::get('/landing1', function () {
+    return view('landing.index');
+});
 
 // Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
