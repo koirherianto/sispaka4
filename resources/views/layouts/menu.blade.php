@@ -379,3 +379,12 @@
         </li>
     @endcan
 @endif
+
+@can('bcRuleCode.index')
+<li>
+    <a href="{{ route('bcRuleCodes.index') }}">
+        <i class="bx bx-home-alt icon nav-icon"></i>
+        <span class="menu-item">Bc Rule Codes</span>
+        </a>
+</li>
+@endcan

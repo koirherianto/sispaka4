@@ -44,3 +44,5 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
+
+Route::resource('bc-rule-codes', App\Http\Controllers\BcRuleCodeController::class);

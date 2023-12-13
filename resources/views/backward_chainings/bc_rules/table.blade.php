@@ -1,14 +1,14 @@
 <div class="card">
     <div class="card-body">
-        <div class="d-flex flex-wrap align-items-center mb-2">
+        {{-- <div class="d-flex flex-wrap align-items-center mb-2">
             <h5 class="card-title">
-                Backward Chaining Rules
+                
             </h5>
-        </div>
+        </div> --}}
         <div class="row">
             <div class="col-sm-10">
                 <div class="d-flex justify-content-between mb-2">
-                    <h5 class="card-title"></h5>
+                    <h5 class="card-title">Backward Chaining Rules</h5>
                     @can('bcRule.index')
                         <a href="{{ route('bcRules.create') }}" class="btn btn-primary">Add Rule</a>
                     @endcan
@@ -72,12 +72,14 @@
                     <thead>
                         <tr>
                             <th scope="col">Code Rule</th>
+                            <th scope="col">Act</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($dataRelasi as $relasi)
                         <tr>
                             <td>{{ $relasi['goalCodes'] }}</td>
+                            <td>...</td>
                         </tr>
                         @endforeach
                     </tbody>
