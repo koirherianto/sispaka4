@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\BackwardChaining;
 
-use App\Http\Requests\CreateBcRuleCodeRequest;
-use App\Http\Requests\UpdateBcRuleCodeRequest;
+use App\Http\Requests\BackwardChaining\CreateBcRuleCodeRequest;
+use App\Http\Requests\BackwardChaining\UpdateBcRuleCodeRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\BcRuleCodeRepository;
 use Illuminate\Http\Request;
@@ -104,10 +104,15 @@ class BcRuleCodeController extends AppBaseController
             return redirect(route('bcRuleCodes.index'));
         }
 
-        $bcRuleCode = $this->bcRuleCodeRepository->update($request->all(), $id);
+        $input = $request->all();
+        $currentProject = Project::find(Auth::user()->session_project);
+        $input['backward_chaining_id'] =  $currentProject->backwardChaining->id;
+
+        $bcRuleCode = $this->bcRuleCodeRepository->update($input, $id);
 
         Flash::success('Rule Code updated successfully.');
-        return redirect(route('bcRuleCodes.index'));
+        return redirect(route('bcRules.index'));
+        // return redirect(route('bcRuleCodes.index'));
     }
 
     /**
@@ -127,6 +132,7 @@ class BcRuleCodeController extends AppBaseController
         $this->bcRuleCodeRepository->delete($id);
 
         Flash::success('Rule Code deleted successfully.');
-        return redirect(route('bcRuleCodes.index'));
+        return redirect(route('bcRules.index'));
+        // return redirect(route('bcRuleCodes.index'));
     }
 }

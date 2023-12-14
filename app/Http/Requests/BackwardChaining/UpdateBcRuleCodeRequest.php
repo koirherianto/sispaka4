@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\BackwardChaining;
 
 use App\Models\BackwardChaining\BcRuleCode;
 use Illuminate\Foundation\Http\FormRequest;

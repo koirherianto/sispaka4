@@ -49,8 +49,8 @@ class BcRuleController extends AppBaseController
             })
             ->paginate(10);
 
-        $dataRelasi =  $this->getDataRelasi();
         $bcRuleCodes = $this->indexRulesCode();
+        $dataRelasi =  $this->getDataRelasi();    
 
         return view('backward_chainings.bc_rules.index', compact('bcRules', 'dataRelasi', 'bcRuleCodes'));
     }
@@ -62,7 +62,7 @@ class BcRuleController extends AppBaseController
         return $bcRuleCodes = $currentProject->backwardChaining->bcRuleCodes()->get();
     }
 
-    // relasi antara bc goal, bc edvidence, dan bc rule
+    // relasi antara bc goal, bc edvidence, dan backward Chaining rule
     private function getDataRelasi() : array {
         $currentProject = Project::find(Auth::user()->session_project);
         $backwardChaining = $currentProject->backwardChaining;
@@ -87,6 +87,13 @@ class BcRuleController extends AppBaseController
 
     public function create()
     {
+        // jika $bcRuleCodes kosong, return 
+        $bcRuleCodes = $this->indexRulesCode();
+        if ($bcRuleCodes->count() == 0) {
+            Flash::error('Please Add Rule Code First.');
+            return redirect(route('bcRules.index'));
+        }
+
         $currentProject = Project::find(Auth::user()->session_project);
         
         $backwardChaining = $currentProject->backwardChaining;
@@ -116,7 +123,7 @@ class BcRuleController extends AppBaseController
     {
         $input = $request->all();
 
-        // cek apakah di bc rule ada memiliki relasi dengan bc goal dan bc evidence yang sama
+        // cek apakah di backward Chaining rule ada memiliki relasi dengan bc goal dan bc evidence yang sama
         $isSameExist = BcRule::where('bc_goal_id', $input['bc_goal_id'])->where('bc_evidence_id', $input['bc_evidence_id']);
         if ($isSameExist->count() > 0) {
             Flash::error('Rule already exist.');
@@ -125,7 +132,7 @@ class BcRuleController extends AppBaseController
 
         $bcRule = $this->bcRuleRepository->create($input);
 
-        Flash::success('Bc Rule saved successfully.');
+        Flash::success('Backward Chaining Rule saved successfully.');
         return redirect(route('bcRules.index'));
     }
 
@@ -137,7 +144,7 @@ class BcRuleController extends AppBaseController
         $bcRule = $this->bcRuleRepository->find($id);
         
         if (empty($bcRule)) {
-            Flash::error('Bc Rule not found');
+            Flash::error('Backward Chaining Rule not found');
             return redirect(route('bcRules.index'));
         }
 
@@ -152,16 +159,28 @@ class BcRuleController extends AppBaseController
         $bcRule = $this->bcRuleRepository->find($id);
 
         if (empty($bcRule)) {
-            Flash::error('Bc Rule not found');
+            Flash::error('Backward Chaining Rule not found');
             return redirect(route('bcRules.index'));
         }
 
         $currentProject = Project::find(Auth::user()->session_project);
         $backwardChaining = $currentProject->backwardChaining;
-        $bcGoals = $backwardChaining->bcGoals->pluck('name', 'id');
-        $bcEvidences = $backwardChaining->bcEvidences->pluck('name', 'id');
+        $bcRuleCodes = $backwardChaining->bcRuleCodes->pluck('code_name', 'id');
+        $bcGoals = $backwardChaining->bcGoals->map(function ($goal) {
+            return [
+                'id' => $goal->id,
+                'name' => $goal->name . ' - ' . $goal->code_name,
+            ];
+        })->pluck('name', 'id');
+        
+        $bcEvidences = $backwardChaining->bcEvidences->map(function ($evidence) {
+            return [
+                'id' => $evidence->id,
+                'name' => $evidence->name . ' - ' . $evidence->code_name,
+            ];
+        })->pluck('name', 'id');
 
-        return view('backward_chainings.bc_rules.edit', compact('bcRule', 'bcGoals', 'bcEvidences'));
+        return view('backward_chainings.bc_rules.edit', compact('bcRule', 'bcGoals', 'bcEvidences', 'bcRuleCodes'));
     }
 
     /**
@@ -172,7 +191,7 @@ class BcRuleController extends AppBaseController
         $bcRule = $this->bcRuleRepository->find($id);
 
         if (empty($bcRule)) {
-            Flash::error('Bc Rule not found');
+            Flash::error('Backward Chaining Rule not found');
             return redirect(route('bcRules.index'));
         }
 
@@ -191,7 +210,7 @@ class BcRuleController extends AppBaseController
 
         $bcRule = $this->bcRuleRepository->update($input, $id);
 
-        Flash::success('Bc Rule updated successfully.');
+        Flash::success('Backward Chaining Rule updated successfully.');
         return redirect(route('bcRules.index'));
     }
 
@@ -205,13 +224,13 @@ class BcRuleController extends AppBaseController
         $bcRule = $this->bcRuleRepository->find($id);
 
         if (empty($bcRule)) {
-            Flash::error('Bc Rule not found');
+            Flash::error('Backward Chaining Rule not found');
             return redirect(route('bcRules.index'));
         }
 
         $this->bcRuleRepository->delete($id);
 
-        Flash::success('Bc Rule deleted successfully.');
+        Flash::success('Backward Chaining Rule deleted successfully.');
         return redirect(route('bcRules.index'));
     }
 }

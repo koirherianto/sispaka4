@@ -1,12 +1,11 @@
 @extends('layouts.master')
 
 @section('title')
-        Edit Bc Rule Code
-    @endsection
+    Edit Backward Chaining Rule Code
+@endsection
 
 @section('page-title')
-    
-    Edit Bc Rule Code
+    Edit Backward Chaining Rule Code
 @endsection
 
 @section('body')
@@ -29,7 +28,7 @@
 
         <div class="card-footer">
             {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-            <a href="{{ route('bcRuleCodes.index') }}" class="btn btn-default"> Cancel </a>
+            <a href="{{ route('bcRules.index') }}" class="btn btn-default"> Cancel </a>
         </div>
 
         {!! Form::close() !!}

@@ -14,6 +14,7 @@
                     @endcan
                 </div>
                 <div class="table-responsive">
+                    {{-- ini table bcrule --}}
                     <table id="data-table" class="table table-striped table-centered align-middle table-nowrap mb-0 table-check">
                         <thead>
                             <tr>
@@ -68,6 +69,7 @@
                         <a href="{{ route('bcRuleCodes.create') }}" class="btn btn-primary">Add Code Rule</a>
                     @endcan
                 </div>
+                {{-- ini table bc rule code--}}
                 <table class="table table-striped table-centered align-middle table-nowrap mb-0 table-check">
                     <thead>
                         <tr>
@@ -79,7 +81,20 @@
                         @foreach ($bcRuleCodes as $bcRuleCode)
                         <tr>
                             <td>{{ $bcRuleCode->code_name }}</td>
-                            <td>...</td>
+                            <td>
+                                <div class="dropdown">
+                                    <a class="text-muted dropdown-toggle font-size-18" role="button"
+                                        data-bs-toggle="dropdown" aria-haspopup="true">
+                                        <i class="mdi mdi-dots-horizontal"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a class="dropdown-item" href="{{ route('bcRuleCodes.edit', [$bcRuleCode->id]) }}">Edit</a>
+                                        {!! Form::open(['route' => ['bcRuleCodes.destroy', $bcRuleCode->id], 'method' => 'delete']) !!}
+                                        {!! Form::button('Delete', ['type' => 'submit', 'class' => 'dropdown-item', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                                        {!! Form::close() !!}
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
