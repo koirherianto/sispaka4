@@ -157,13 +157,13 @@ class ProjectController extends AppBaseController
      */
     public function destroy($id)
     {
-        return 'svds';
         $project = $this->projectRepository->find($id);
 
         if (empty($project)) {
             Flash::error('Project not found');
             return redirect(route('projects.index'));
         }
+
         DB::transaction(function () use ($project, $id) {
             // hapus session_project pada user yang memiliki id project ini
             User::all()->each(function ($user) use ($id) {
@@ -175,6 +175,12 @@ class ProjectController extends AppBaseController
 
             $project->methods()->detach();
             $project->users()->detach();
+            $project->backwardChaining->bcRules()->delete();
+            $project->backwardChaining->bcRuleCodes()->delete();
+            $project->backwardChaining->bcEvidences()->delete();
+            $project->backwardChaining->bcGoals()->delete();
+            $project->backwardChaining->delete();
+
             $this->projectRepository->delete($id);
 
         }, 3);

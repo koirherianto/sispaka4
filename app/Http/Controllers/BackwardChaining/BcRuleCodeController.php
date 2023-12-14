@@ -9,6 +9,7 @@ use App\Repositories\BcRuleCodeRepository;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\BackwardChaining\BcRuleCode;
+use DB;
 use Auth;
 use Flash;
 
@@ -35,7 +36,7 @@ class BcRuleCodeController extends AppBaseController
         $currentProject = Project::find(Auth::user()->session_project);
         $bcRuleCodes = $currentProject->backwardChaining->bcRuleCodes()->paginate(10);
 
-        return view('bc_rule_codes.index')->with('bcRuleCodes', $bcRuleCodes);
+        return view('backward_chainings.bc_rule_codes.index')->with('bcRuleCodes', $bcRuleCodes);
     }
 
     /**
@@ -43,7 +44,7 @@ class BcRuleCodeController extends AppBaseController
      */
     public function create()
     {
-        return view('bc_rule_codes.create');
+        return view('backward_chainings.bc_rule_codes.create');
     }
 
     /**
@@ -74,7 +75,7 @@ class BcRuleCodeController extends AppBaseController
             return redirect(route('bcRuleCodes.index'));
         }
 
-        return view('bc_rule_codes.show')->with('bcRuleCode', $bcRuleCode);
+        return view('backward_chainings.bc_rule_codes.show')->with('bcRuleCode', $bcRuleCode);
     }
 
     /**
@@ -89,7 +90,7 @@ class BcRuleCodeController extends AppBaseController
             return redirect(route('bcRuleCodes.index'));
         }
 
-        return view('bc_rule_codes.edit')->with('bcRuleCode', $bcRuleCode);
+        return view('backward_chainings.bc_rule_codes.edit')->with('bcRuleCode', $bcRuleCode);
     }
 
     /**
@@ -129,7 +130,10 @@ class BcRuleCodeController extends AppBaseController
             return redirect(route('bcRuleCodes.index'));
         }
 
-        $this->bcRuleCodeRepository->delete($id);
+        DB::transaction(function () use ($bcRuleCode, $id) {
+            $bcRuleCode->bcRules()->delete();
+            $this->bcRuleCodeRepository->delete($id);
+        }, 3);
 
         Flash::success('Rule Code deleted successfully.');
         return redirect(route('bcRules.index'));

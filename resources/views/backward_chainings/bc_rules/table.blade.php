@@ -29,7 +29,7 @@
                                 <tr>
                                     <td>{{ $bcRule->bcGoal->name }}</td>
                                     <td>{{ $bcRule->bcEvidence->name }}</td>
-                                    <td>{{ $bcRule->bcRuleCode->code_name }}</td>
+                                    <td>{{ $bcRule->bcRuleCode->code_name}}</td>
                                     <td>
                                         <div class="dropdown">
                                             <a class="text-muted dropdown-toggle font-size-18" role="button"
