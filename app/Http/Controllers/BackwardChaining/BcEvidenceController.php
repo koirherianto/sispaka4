@@ -117,7 +117,7 @@ class BcEvidenceController extends AppBaseController
         }
 
         DB::transaction(function () use($bcEvidence,$id) {
-            $bcEvidence->bcRules->each->delete();
+            $bcEvidence->bcRules()->delete();
             $this->bcEvidenceRepository->delete($id);
         },3);
 
