@@ -2,7 +2,7 @@
     <div class="card-body">
         <div class="d-flex flex-wrap align-items-center mb-2">
             <h5 class="card-title">
-                Goals | {{ $currentProject->title }}
+                Goals / Results | {{ $currentProject->title }}
             </h5>
             <div class="ms-auto">
                 <div class="dropdown">
