@@ -56,18 +56,25 @@
                             </div>
 
                             <div class="d-flex gap-2 pt-4">
-                                {!! Form::open(['route' => ['changeProject', $project->id], 'method' => 'post']) !!}
-                                    {!! Form::button(Auth::user()->session_project == $project->id ? 'Unmanage' : 'Manage', [
-                                        'type' => 'submit',
-                                        'class' => 'btn btn-sm ' . (Auth::user()->session_project == $project->id ? 'btn-soft-primary' : 'btn-primary'),
-                                        'onclick' => "return confirm('Are you sure?')",
-                                    ]) !!}
-                                {!! Form::close() !!}
-                                {{-- <button type="button" class="btn btn-soft-primary btn-sm w-50"><i
-                                        class="bx bx-user me-1"></i> Profile</button>
-                                <button type="button" class="btn btn-primary btn-sm w-50"><i
-                                        class="bx bx-message-square-dots me-1"></i> Contact</button> --}}
+                                @if(Auth::user()->session_project == $project->id)
+                                    {!! Form::open(['route' => ['unmanageProject', $project->id], 'method' => 'post']) !!}
+                                        {!! Form::button('Unmanage', [
+                                            'type' => 'submit',
+                                            'class' => 'btn btn-sm btn-soft-primary',
+                                            'onclick' => "return confirm('Are you sure you want to unmanage this project?')",
+                                        ]) !!}
+                                    {!! Form::close() !!}
+                                @else
+                                    {!! Form::open(['route' => ['changeProject', $project->id], 'method' => 'post']) !!}
+                                        {!! Form::button('Manage', [
+                                            'type' => 'submit',
+                                            'class' => 'btn btn-sm btn-primary',
+                                            'onclick' => "return confirm('Are you sure you want to manage this project?')",
+                                        ]) !!}
+                                    {!! Form::close() !!}
+                                @endif
                             </div>
+                            
                         </div>
                     </div>
                     <!-- end card -->
@@ -83,7 +90,7 @@
     </div>
 
 
-    <table id="data-table" class="table table-striped table-centered align-middle table-nowrap mb-0 table-check">
+    {{-- <table id="data-table" class="table table-striped table-centered align-middle table-nowrap mb-0 table-check">
         <thead>
         <tr>
             <th>Title</th>
@@ -141,4 +148,4 @@
             </tr>
         @endforeach
         </tbody>
-    </table>
+    </table> --}}

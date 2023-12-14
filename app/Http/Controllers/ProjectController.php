@@ -38,11 +38,11 @@ class ProjectController extends AppBaseController
         $user = Auth::user();
 
         if ($user->hasRole('super-admin')) {
-            $projects = $this->projectRepository->paginate(10);
+            $projects = $this->projectRepository->paginate(20);
         }
         
         if ($user->hasRole('user')) {
-            $projects = $user->projects()->paginate(10);
+            $projects = $user->projects()->paginate(20);
         }
 
         return view('projects.index', compact('projects','user'));
@@ -166,21 +166,63 @@ class ProjectController extends AppBaseController
 
         DB::transaction(function () use ($project, $id) {
             // hapus session_project pada user yang memiliki id project ini
-            User::all()->each(function ($user) use ($id) {
-                if ($user->session_project == $id) {
-                    $user->session_project = null;
-                    $user->save();
-                }
+            User::where('session_project', $id)->update(['session_project' => null]);
+
+            //hapus rules dari arah bc evidence
+            $project->backwardChaining->bcEvidences->each(function ($evidence) {
+                $evidence->bcRules()->delete();
             });
 
-            $project->methods()->detach();
-            $project->users()->detach();
-            $project->backwardChaining->bcRules()->delete();
+            //hapus rules dari arah bc goal
+            $project->backwardChaining->bcGoals->each(function ($goal) {
+                $goal->bcRules()->delete();
+            });
+            
             $project->backwardChaining->bcRuleCodes()->delete();
             $project->backwardChaining->bcEvidences()->delete();
             $project->backwardChaining->bcGoals()->delete();
             $project->backwardChaining->delete();
 
+            // Detach methods and users
+            $project->methods()->detach();
+            $project->users()->detach();
+
+            $this->projectRepository->delete($id);
+
+        }, 3);
+
+        Flash::success('Project deleted successfully.');
+        return redirect(route('projects.index'));
+    }
+
+    public function destroyy($id)
+    {
+        $project = $this->projectRepository->find($id);
+
+        if (empty($project)) {
+            Flash::error('Project not found');
+            return redirect(route('projects.index'));
+        }
+
+        DB::transaction(function () use ($project, $id) {
+            // Remove session_project from users with this project
+            User::where('session_project', $id)->update(['session_project' => null]);
+
+            // Delete associated backward chaining entities
+            $project->backwardChaining->bcRuleCodes()->delete();
+            BcRule::whereIn('bc_goal_id', $project->backwardChaining->bcGoals()->pluck('id'))->delete();
+            $project->backwardChaining->bcEvidences()->each(function ($evidence) {
+                $evidence->bcRules()->delete();
+            });
+            $project->backwardChaining->bcEvidences()->delete();
+            $project->backwardChaining->bcGoals()->delete();
+            $project->backwardChaining->delete();
+
+            // Detach methods and users
+            $project->methods()->detach();
+            $project->users()->detach();
+
+            // Delete the project
             $this->projectRepository->delete($id);
 
         }, 3);
@@ -197,6 +239,17 @@ class ProjectController extends AppBaseController
 
         $project = Project::find($id);
         Flash::success('Project changed to '.$project->title.' successfully.');
+        return redirect(route('projects.index'));
+    }
+
+    // fungsi untuk unmanage project
+    public function unmanageProject($id) {
+        $user = Auth::user();
+        $user->session_project = null;
+        $user->save();
+
+        $project = Project::find($id);
+        Flash::success('Project' .$project->title.' unmanaged successfully.');
         return redirect(route('projects.index'));
     }
 
