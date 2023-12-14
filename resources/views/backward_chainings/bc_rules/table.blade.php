@@ -27,8 +27,8 @@
                         <tbody>
                             @foreach ($bcRules as $bcRule)
                                 <tr>
-                                    <td>{{ $bcRule->bcGoal->name }}</td>
-                                    <td>{{ $bcRule->bcEvidence->name }}</td>
+                                    <td>{{ $bcRule->bcGoal->code_name }} - {{ $bcRule->bcGoal->name }}</td>
+                                    <td>{{ $bcRule->bcEvidence->code_name }} - {{ $bcRule->bcEvidence->name }}</td>
                                     <td>{{ $bcRule->bcRuleCode->code_name}}</td>
                                     <td>
                                         <div class="dropdown">

@@ -78,7 +78,7 @@ class BcRuleController extends AppBaseController
             
             $dataRelasi[] = [
                 'evidenceCodes' => $bcEvidenceCodes,    
-                'goalCodes' => $bcGoal->code_name
+                'goalCodes' => $bcGoal->code_name,
             ];
         }
 
@@ -124,7 +124,10 @@ class BcRuleController extends AppBaseController
         $input = $request->all();
 
         // cek apakah di backward Chaining rule ada memiliki relasi dengan bc goal dan bc evidence yang sama
-        $isSameExist = BcRule::where('bc_goal_id', $input['bc_goal_id'])->where('bc_evidence_id', $input['bc_evidence_id']);
+        $isSameExist = BcRule::where('bc_goal_id', $input['bc_goal_id'])
+            ->where('bc_evidence_id', $input['bc_evidence_id'])
+            ->where('bc_rule_code_id', $input['bc_rule_code_id']);
+
         if ($isSameExist->count() > 0) {
             Flash::error('Rule already exist.');
             return redirect(route('bcRules.index'));
@@ -200,6 +203,7 @@ class BcRuleController extends AppBaseController
         // Check if there's a duplicate rule with the same bc_goal_id and bc_evidence_id after update
         $duplicateRule = BcRule::where('bc_goal_id', $input['bc_goal_id'])
             ->where('bc_evidence_id', $input['bc_evidence_id'])
+            ->where('bc_rule_code_id', $input['bc_rule_code_id'])
             ->where('id', '!=', $id)
             ->first();
 
