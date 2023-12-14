@@ -18,9 +18,7 @@
                     <table id="data-table" class="table table-striped table-centered align-middle table-nowrap mb-0 table-check">
                         <thead>
                             <tr>
-                                {{-- <th>Goal Code</th> --}}
                                 <th>Goal</th>
-                                {{-- <th>Evidence Code</th> --}}
                                 <th>Evidence</th>
                                 <th>Code Rule</th>
                                 <th colspan="1">Action</th>
@@ -29,11 +27,9 @@
                         <tbody>
                             @foreach ($bcRules as $bcRule)
                                 <tr>
-                                    {{-- <td>{{ $bcRule->bcGoal->code_name }}</td> --}}
                                     <td>{{ $bcRule->bcGoal->name }}</td>
-                                    {{-- <td>{{ $bcRule->bcEvidence->code_name }}</td> --}}
                                     <td>{{ $bcRule->bcEvidence->name }}</td>
-                                    <td>{{ $bcRule->code_name }}</td>
+                                    <td>{{ $bcRule->bcRuleCode->code_name }}</td>
                                     <td>
                                         <div class="dropdown">
                                             <a class="text-muted dropdown-toggle font-size-18" role="button"
