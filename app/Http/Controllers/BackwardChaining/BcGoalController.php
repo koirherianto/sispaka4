@@ -11,6 +11,7 @@ use App\Models\Project;
 use Response;
 use Flash;
 use Auth;
+use DB;
 
 
 class BcGoalController extends AppBaseController
@@ -107,7 +108,11 @@ class BcGoalController extends AppBaseController
             return redirect(route('bcGoals.index'));
         }
 
-        $this->bcGoalRepository->delete($id);
+        // Delete relasi rule
+        DB::transaction(function () use ($bcGoal, $id) {
+            $bcGoal->bcRules()->delete();
+            $this->bcGoalRepository->delete($id);
+        }, 3);
 
         Flash::success('Backward Chaining Goal deleted successfully.');
         return redirect(route('bcGoals.index'));
