@@ -2,12 +2,12 @@
     <div class="card-body">
         <div class="d-flex flex-wrap align-items-center mb-2">
             <h5 class="card-title">
-                Bc Rule Codes 
+                Backward Chaining Rule Codes 
             </h5>
         <div class="ms-auto">
             <div class="dropdown">
                 @can('bcRuleCode.index')
-                <a href="{{ route('bcRuleCodes.create') }}" class="btn btn-primary float-right"> Tambah Data </a>
+                <a href="{{ route('bcRuleCodes.create') }}" class="btn btn-primary float-right"> Add Data </a>
                 @endcan
             </div>
         </div>

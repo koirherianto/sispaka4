@@ -7,7 +7,7 @@
         <div class="ms-auto">
             <div class="dropdown">
                 @can('backwardChaining.index')
-                <a href="{{ route('backwardChainings.create') }}" class="btn btn-primary float-right"> Tambah Data </a>
+                <a href="{{ route('backwardChainings.create') }}" class="btn btn-primary float-right"> Add Data </a>
                 @endcan
             </div>
         </div>

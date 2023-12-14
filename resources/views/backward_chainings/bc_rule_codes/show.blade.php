@@ -1,12 +1,11 @@
 @extends('layouts.master')
 
 @section('title')
-        Bc Rule Code Details
-    @endsection
+    Backward Chaining Rule Code Details
+@endsection
 
 @section('page-title')
-    
-    Bc Rule Code Details
+    Backward Chaining Rule Code Details
 @endsection
 
 @section('body')
@@ -18,7 +17,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    @include('bc_rule_codes.show_fields')
+                    @include('backward_chainings.bc_rule_codes.show_fields')
                 </div>
             </div>
             <div class="card-footer">

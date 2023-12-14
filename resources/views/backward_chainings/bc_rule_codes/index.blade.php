@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('page-title')
-    Bc Rule Codes
+    Backward Chaining Rule Codes
 @endsection
 
 @section('title')
-    Bc Rule Codes
+    Backward Chaining Rule Codes
 @endsection
 
 @section('css')
@@ -21,7 +21,7 @@
 
 @section('content')
     @include('flash::message')
-    @include('bc_rule_codes.table')
+    @include('backward_chainings.bc_rule_codes.table')
 @endsection
 
 @section('scripts')
