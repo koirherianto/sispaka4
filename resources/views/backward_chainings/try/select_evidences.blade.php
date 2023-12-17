@@ -18,8 +18,9 @@
     <div class="card p-4">
         <h1>Choises Evidence - {{ $selectedGoal->name }}</h1>
         
-        <form method="post" action="{{ route('bcTry.selectGoals') }}" class="mt-3">
+        <form method="post" action="{{ route('bcTry.result') }}" class="mt-3">
             @csrf
+            <input type="hidden" name="selected_rules" value="{{ $selectedRules }}">
             <input type="hidden" name="bc_goal_id" value="{{ $selectedGoal->id }}">
             <table class="table table-bordered">
                 <thead>

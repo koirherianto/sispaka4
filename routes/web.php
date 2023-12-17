@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('bcRuleCodes', App\Http\Controllers\BackwardChaining\BcRuleCodeController::class);
         Route::get('bcTry/selectGoals', [App\Http\Controllers\BackwardChaining\BackwardChaningTryController::class, 'selectGoals'])->name('bcTry.selectGoals');
         Route::post('bcTry/selectEvidences', [App\Http\Controllers\BackwardChaining\BackwardChaningTryController::class, 'selectEvidences'])->name('bcTry.selectEvidences');
+        Route::post('bcTry/result', [App\Http\Controllers\BackwardChaining\BackwardChaningTryController::class, 'result'])->name('bcTry.result');
     });
 });
 
