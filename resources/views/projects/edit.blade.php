@@ -9,6 +9,7 @@
 @endsection
 
 @section('body')
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
     <body>
 @endsection
 
@@ -18,7 +19,7 @@
 
     <div class="card">
 
-        {!! Form::model($project, ['route' => ['projects.update', $project->id], 'method' => 'patch']) !!}
+        {!! Form::model($project, ['route' => ['projects.update', $project->id], 'method' => 'patch','files' => true]) !!}
 
         <div class="card-body">
             <div class="row">
@@ -29,6 +30,7 @@
         <div class="card-footer d-flex justify-content-between">
             <div>
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                {!! Form::close() !!}
                 <a href="{{ route('projects.index') }}" class="btn btn-default"> Cancel </a>
             </div>
             <div>
@@ -41,7 +43,6 @@
             </div>
         </div>
 
-        {!! Form::close() !!}
 
     </div>
 @endsection
@@ -54,6 +55,28 @@
     <script src="{{ URL::asset('build/js/pages/dashboard-sales.init.js') }}"></script>
     {{-- App js --}}
     <script src="{{ URL::asset('build/js/app.js') }}"></script>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'), {
+                heading: {
+                    options: [
+                        { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+                        { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
+                        { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' },
+                        // ... tambahkan opsi heading lainnya sesuai kebutuhan Anda
+                    ]
+                }
+            })
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+    
+    
     
 @endsection
         

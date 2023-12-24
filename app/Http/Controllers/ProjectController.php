@@ -144,10 +144,17 @@ class ProjectController extends AppBaseController
         unset($input['user_id']); // user tidak boleh diupdate
         unset($input['status_publish']); // status_publish tidak boleh diupdate
 
+        // save thumnail using spatie media library
+        if ($request->hasFile('thumbnail')) {
+            // project hanya memiliki 1 thumbnail
+            $project->clearMediaCollection('thumbnail');
+            $project->addMediaFromRequest('thumbnail')->toMediaCollection('thumbnail');
+        }
+
         $project = $this->projectRepository->update($input, $id);
 
         Flash::success('Project updated successfully.');
-        return redirect(route('projects.index'));
+        return redirect(route('projects.edit', $id));
     }
 
     /**
@@ -221,6 +228,9 @@ class ProjectController extends AppBaseController
             // Detach methods and users
             $project->methods()->detach();
             $project->users()->detach();
+
+            // hapus thumbnail
+            $project->clearMediaCollection('thumbnail');
 
             // Delete the project
             $this->projectRepository->delete($id);

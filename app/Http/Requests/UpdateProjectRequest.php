@@ -25,6 +25,7 @@ class UpdateProjectRequest extends FormRequest
     public function rules()
     {
         $rules = Project::$rules;
+        $rules['thumbnail'] = 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048';
         
         return $rules;
     }

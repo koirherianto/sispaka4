@@ -9,6 +9,7 @@
 @endsection
 
 @section('body')
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
     <body>
 @endsection
 
@@ -18,7 +19,7 @@
 
     <div class="card">
 
-        {!! Form::open(['route' => 'projects.store']) !!}
+        {!! Form::open(['route' => 'projects.store','files' => true]) !!}
 
         <div class="card-body">
 
@@ -46,6 +47,16 @@
     <script src="{{ URL::asset('build/js/pages/dashboard-sales.init.js') }}"></script>
     {{-- App js --}}
     <script src="{{ URL::asset('build/js/app.js') }}"></script>
-    
+
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .then( editor => {
+                    console.log( editor );
+            } )
+            .catch( error => {
+                    console.error( error );
+            } );
+    </script>
 @endsection
     

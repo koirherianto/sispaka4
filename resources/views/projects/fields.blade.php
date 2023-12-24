@@ -39,35 +39,60 @@
     </div>
 @endif
 
-<!-- Seo Keyword Field -->
-<div class="form-group col-sm-6 mb-2">
-    {!! Form::label('seo_keyword', 'Seo Keyword:') !!}
-    {!! Form::text('seo_keyword', null, ['class' => 'form-control', 'maxlength' => 100]) !!}
-    @error('seo_keyword') 
-        <span class="invalid-feedback d-block" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror 
-</div>
+@if(!$isCreatedPage)
 
-<!-- Seo Description Field -->
-<div class="form-group col-sm-6 mb-2">
-    {!! Form::label('seo_description', 'Seo Description:') !!}
-    {!! Form::text('seo_description', null, ['class' => 'form-control', 'maxlength' => 160]) !!}
-    @error('seo_description') 
-        <span class="invalid-feedback d-block" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror 
-</div>
+    <!-- Seo Keyword Field -->
+    <div class="form-group col-sm-6 mb-2">
+        {!! Form::label('seo_keyword', 'Seo Keyword:') !!}
+        {!! Form::text('seo_keyword', null, ['class' => 'form-control', 'maxlength' => 100]) !!}
+        @error('seo_keyword') 
+            <span class="invalid-feedback d-block" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror 
+    </div>
 
-<!-- Content Field -->
-<div class="form-group col-sm-12 col-lg-12 mb-2">
-    {!! Form::label('content', 'Content:') !!}
-    {!! Form::textarea('content', null, ['class' => 'form-control', 'maxlength' => 65535]) !!}
-    @error('content') 
-        <span class="invalid-feedback d-block" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror 
-</div>
+    <!-- Seo Description Field -->
+    <div class="form-group col-sm-6 mb-2">
+        {!! Form::label('seo_description', 'Seo Description:') !!}
+        {!! Form::text('seo_description', null, ['class' => 'form-control', 'maxlength' => 160]) !!}
+        @error('seo_description') 
+            <span class="invalid-feedback d-block" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror 
+    </div>
+
+    {{-- input thumnail --}}
+    <div class="form-group col-sm-6 mb-2">
+        @if(isset($project) && $project->hasMedia('thumbnail'))
+        {!! Form::label('thumbnail', 'Thumbnail Blog (Isi Untuk Memperbarui Thumbnail):') !!}
+        @else
+        {!! Form::label('thumbnail', 'Thumbnail Blog:') !!}
+        @endif
+        <div style="display: flex; align-items: center;">
+            {!! Form::file('thumbnail', ['class' => 'form-control', 'id' => 'formFile']) !!}
+            @if(isset($project) && $project->hasMedia('thumbnail'))
+                <img src="{{ $project->getFirstMediaUrl('thumbnail') }}" alt="Thumbnail Preview" style="max-width: 100px; max-height: 100px; margin-left: 10px;">
+            @endif
+        </div>
+        @error('thumbnail') 
+            <span class="invalid-feedback d-block" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+
+
+    <!-- Content Field -->
+    <div class="form-group col-sm-12 col-lg-12 mb-2">
+        {!! Form::label('content', 'Content: (Write your blog in here!)') !!}
+        {!! Form::textarea('content', null, ['class' => 'form-control', 'maxlength' => 65535, 'id' => 'editor']) !!}
+        @error('content') 
+            <span class="invalid-feedback d-block" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror 
+    </div>
+
+@endif
