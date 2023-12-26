@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="{{ asset('landing2/bootstrap/css/bootstrap.css') }} " type="text/css">
     <link rel="stylesheet" href="{{ asset('landing2/css/magnific-popup.css') }} " type="text/css">
     <link rel="stylesheet" href="{{ asset('landing2/css/style.css') }} " type="text/css">
+    {{-- pavicon --}}
+    <link rel="shortcut icon" href="{{ asset('landing2/img/favicon.ico') }} " type="image/x-icon">
     <!-- Tambahkan link CSS lainnya di sini -->
     <title>@yield('title')</title>
     <meta name="description" content="@yield('description')">

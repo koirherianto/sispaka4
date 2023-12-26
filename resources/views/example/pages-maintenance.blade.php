@@ -18,8 +18,8 @@
                         <div class="d-flex flex-column min-vh-100">
                             <div class="my-auto py-5">
                                 <div class="text-center mb-4 pb-1">
-                                    <a href="index" class="d-block auth-logo">
-                                        <img src="{{ URL::asset('build/images/logo-dark.png') }}" alt="" height="36"
+                                    <a href="/" class="d-block auth-logo">
+                                        <img src="{{ URL::asset('landing2/img/logoname.png') }}" alt="" height="36"
                                             class="auth-logo-dark">
                                         <img src="{{ URL::asset('build/images/logo-light.png') }}" alt="" height="36"
                                             class="auth-logo-light">

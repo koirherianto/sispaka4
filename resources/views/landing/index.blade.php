@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ asset('landing2/css/magnific-popup.css') }} " type="text/css">
     <link rel="stylesheet" href="{{ asset('landing2/css/style.css') }} " type="text/css">
     <meta name="description" content="Sispaka - Platform Sistem Pakar Berbasis Web tanpa Kode. Buat dan kelola sistem pakar. Daftarkan diri Anda, buat proyek, dan jelajahi pengetahuan medis.">
-
+    <link rel="shortcut icon" href="{{ asset('landing2/img/favicon.ico') }} " type="image/x-icon">
     <title>Sispaka - Expert System Platform </title>
 
     {{-- beda template --}}
@@ -32,7 +32,7 @@
         <div class="content-main animate">
             <div class="container">
                 <h1 class="font-size-90">Sispaka</h1>
-                <h2 class="opacity-60">Cari & Buat Sistem Pakar Tanpa Code</h2>
+                <h2 class="opacity-60">Buat Sistem Pakar Tanpa Code</h2>
                 <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
                     <form class="form">
                         <div class="input-group">
@@ -41,7 +41,7 @@
                                 <button class="btn" type="submit"><i class="arrow_right"></i></button>
                             </span>
                         </div>
-                        <p class="note">*Only relevant information, no spam</p>
+                        <p class="note"><b> Jangan Biarkan Hasil Penelitian Anda Hanya Menjadi Kertas Tak Terbaca </b></p>
                     </form>
 
                     <!--end form-->

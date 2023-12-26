@@ -3,16 +3,16 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href="index" class="logo logo-dark">
+                <a href="/" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="{{ URL::asset('build/images/logo-dark-sm.png') }}" alt="" height="26">
+                        <img src="{{ URL::asset('landing2/img/logoname.png') }}" alt="" height="26">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ URL::asset('build/images/logo-dark.png') }}" alt="" height="28">
+                        <img src="{{ URL::asset('landing2/img/logoname.png') }}" alt="" height="28">
                     </span>
                 </a>
 
-                <a href="index" class="logo logo-light">
+                <a href="/" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="{{ URL::asset('build/images/logo-light-sm.png') }}" alt="" height="26">
                     </span>
@@ -247,7 +247,7 @@
                                 <div class="arrow-down"></div>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
-                                <a href="index" class="dropdown-item" data-key="t-ecommerce">Ecommerce</a>
+                                <a href="/" class="dropdown-item" data-key="t-ecommerce">Ecommerce</a>
                                 <a href="dashboard-sales" class="dropdown-item" data-key="t-sales">Sales</a>
                             </div>
                         </li>

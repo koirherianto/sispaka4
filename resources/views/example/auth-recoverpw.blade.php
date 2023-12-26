@@ -18,8 +18,8 @@
                         <div class="col-md-8 col-lg-6 col-xl-5">
 
                             <div class="mb-4 pb-2">
-                                <a href="index" class="d-block auth-logo">
-                                    <img src="{{ URL::asset('build/images/logo-dark.png') }}" alt="" height="30"
+                                <a href="/" class="d-block auth-logo">
+                                    <img src="{{ URL::asset('landing2/img/logoname.png') }}" alt="" height="30"
                                         class="auth-logo-dark me-start">
                                     <img src="{{ URL::asset('build/images/logo-light.png') }}" alt="" height="30"
                                         class="auth-logo-light me-start">

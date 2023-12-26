@@ -1,5 +1,5 @@
 <header>
-    <div class="brand animate"><a href="/"><img src="{{ asset('landing2/img/logo.png') }}" alt=""></a></div>
+    <div class="brand animate"><a href="/"><img style="max-height: 40%;max-width: 40%"  src="{{ asset('landing2/img/logoname.png') }}" alt=""></a></div>
     <nav>
         <ul class="navigation animate">
             <li><a href="" data-toggle="modal" data-target="#modal-about-us">About Us</a></li>

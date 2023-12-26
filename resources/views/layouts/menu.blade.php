@@ -23,7 +23,7 @@
         <span class="badge rounded-pill bg-primary">2</span>
     </a>
     <ul class="sub-menu" aria-expanded="false">
-        <li><a href="index" data-key="t-ecommerce">Ecommerce</a></li>
+        <li><a href="/" data-key="t-ecommerce">Ecommerce</a></li>
         <li><a href="dashboard-sales" data-key="t-sales">Sales</a></li>
     </ul>
 </li>

@@ -39,7 +39,7 @@
                                     <div class="toast fade show" role="alert" aria-live="assertive"
                                         data-bs-autohide="false" aria-atomic="true">
                                         <div class="toast-header">
-                                            <img src="{{ URL::asset('build/images/logo-dark-sm.png') }}" alt="" class="me-2"
+                                            <img src="{{ URL::asset('landing2/img/logoname.png') }}" alt="" class="me-2"
                                                 height="18">
                                             <strong class="me-auto">webadmin</strong>
                                             <small class="text-muted">11 mins ago</small>
@@ -69,7 +69,7 @@
                                         <div class="toast fade show" role="alert" aria-live="assertive"
                                             data-bs-autohide="false" aria-atomic="true">
                                             <div class="toast-header">
-                                                <img src="{{ URL::asset('build/images/logo-dark-sm.png') }}" alt="" class="me-2"
+                                                <img src="{{ URL::asset('landing2/img/logoname.png') }}" alt="" class="me-2"
                                                     height="18">
                                                 <strong class="me-auto">webadmin</strong>
                                                 <small class="text-muted">11 mins ago</small>
@@ -111,7 +111,7 @@
                                                 <div class="toast fade show" role="alert" aria-live="assertive"
                                                     data-bs-autohide="false" aria-atomic="true">
                                                     <div class="toast-header">
-                                                        <img src="{{ URL::asset('build/images/logo-dark-sm.png') }}" alt=""
+                                                        <img src="{{ URL::asset('landing2/img/logoname.png') }}" alt=""
                                                             class="me-2" height="18">
                                                         <strong class="me-auto">webadmin</strong>
                                                         <small class="text-muted">just now</small>
@@ -126,7 +126,7 @@
                                                 <div class="toast fade show" role="alert" aria-live="assertive"
                                                     data-bs-autohide="false" aria-atomic="true">
                                                     <div class="toast-header">
-                                                        <img src="{{ URL::asset('build/images/logo-dark-sm.png') }}" alt=""
+                                                        <img src="{{ URL::asset('landing2/img/logoname.png') }}" alt=""
                                                             class="me-2" height="18">
                                                         <strong class="me-auto">webadmin</strong>
                                                         <small class="text-muted">2 sec ago</small>
@@ -163,7 +163,7 @@
                                             <div class="toast fade show" role="alert" aria-live="assertive"
                                                 data-bs-autohide="false" aria-atomic="true">
                                                 <div class="toast-header">
-                                                    <img src="{{ URL::asset('build/images/logo-dark-sm.png') }}" alt=""
+                                                    <img src="{{ URL::asset('landing2/img/logoname.png') }}" alt=""
                                                         class="me-2" height="18">
                                                     <strong class="me-auto">webadmin</strong>
                                                     <small>9 min ago</small>

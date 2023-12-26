@@ -11,7 +11,7 @@
     @endsection
     @section('content')
         <div class="home-btn d-none d-sm-block">
-            <a href="index" class="text-white"><i class="fas fa-home h3 text-primary"></i></a>
+            <a href="/" class="text-white"><i class="fas fa-home h3 text-primary"></i></a>
         </div>
 
         <div class="authentication-bg min-vh-100" style="background: url(build/images/bg-1.png);">
@@ -20,8 +20,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="text-center">
-                            <a href="index" class="d-block auth-logo">
-                                <img src="{{ URL::asset('build/images/logo-dark.png') }}" alt="" height="36"
+                            <a href="/" class="d-block auth-logo">
+                                <img src="{{ URL::asset('landing2/img/logoname.png') }}" alt="" height="36"
                                     class="auth-logo-dark mx-auto">
                                 <img src="{{ URL::asset('build/images/logo-light.png') }}" alt="" height="36"
                                     class="auth-logo-light mx-auto">
