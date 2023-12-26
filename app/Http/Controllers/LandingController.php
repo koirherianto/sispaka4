@@ -21,8 +21,13 @@ class LandingController extends Controller
         return view('landing.index', compact('projects'));
     }
     
-    function blogs() {
-        $projects = Project::inRandomOrder()->get();
+    function blogs(Request $request) {
+
+        if ($request->has('search')) {
+            $projects = Project::where('title', 'like', '%'.$request->search.'%')->get();
+        }else {
+            $projects = Project::inRandomOrder()->get();
+        }
 
         return view('landing.blogs', compact('projects'));
     }

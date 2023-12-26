@@ -32,16 +32,16 @@
         <div class="content-main animate">
             <div class="container">
                 <h1 class="font-size-90">Sispaka</h1>
-                <h2 class="opacity-60">Buat Sistem Pakar Tanpa Code</h2>
+                <h2 class="opacity-60">Create an Expert System Without Code</h2>
                 <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
-                    <form class="form">
+                    <form class="form" action="{{ route('blogs') }}">
                         <div class="input-group">
-                            <input type="text" class="form-control" name="email" placeholder="Search Expert System">
+                            <input type="text" class="form-control" name="search" placeholder="Search Expert System">
                             <span class="input-group-btn">
                                 <button class="btn" type="submit"><i class="arrow_right"></i></button>
                             </span>
                         </div>
-                        <p class="note"><b> Jangan Biarkan Hasil Penelitian Anda Hanya Menjadi Kertas Tak Terbaca </b></p>
+                        <p class="note"><b> Don't let your research results just become unreadable paper </b></p>
                     </form>
 
                     <!--end form-->
