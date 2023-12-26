@@ -9,6 +9,7 @@ use App\Models\BackwardChaining\BcRule;
 use App\Models\BackwardChaining\BcGoal;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use Flash;
 use Auth;
 
 class BackwardChaningTryController extends AppBaseController
@@ -60,6 +61,11 @@ class BackwardChaningTryController extends AppBaseController
     {
         $selectedRules = json_decode($request->selected_rules, true);
         $selectedEvidences = $request->selected_evidences;
+        // jika tidak ada evidence yang di pilih
+        if (empty($selectedEvidences)) {
+            Flash::error('Please select at least one evidence');
+            return redirect(route('bcTry.selectGoals'));
+        }
         $selectedEvidencesCount = count($selectedEvidences);
 
 
@@ -71,7 +77,7 @@ class BackwardChaningTryController extends AppBaseController
     }
 
     // Algoritma backward chaining
-    private function backwardChaining($selectedRules, $selectedEvidences)
+    public function backwardChaining($selectedRules, $selectedEvidences)
     {
         $matchedRules = [];
         $unmatchedGoals = [];
@@ -98,7 +104,20 @@ class BackwardChaningTryController extends AppBaseController
             $unmatchedGoals[$key]['bc_rule_code'] = BcRuleCode::find($unmatchedGoal['bc_rule_code_id']);
         }
 
-        $currentGoal = BcGoal::find($matchedRules[0]['bc_goal_id']);
+        $currentGoal = null;
+
+        // jika ada yang sama
+        if (!empty($matchedRules) && isset($matchedRules[0]['bc_goal_id'])) {
+            $currentGoal = BcGoal::find($matchedRules[0]['bc_goal_id']);
+        }else{ //jika tidak ada yang sama
+            return [
+                'result' => 'Pengguna tidak memiliki penyakit', 'unmatched_goals' => $unmatchedGoals,
+                'unmatched_goals' => $unmatchedGoals,
+                'matched_rules' => $matchedRules,
+                'current_goal' => $currentGoal,
+                'is_matched' => false,
+            ];
+        }
 
         // Periksa apakah masih ada tujuan yang tidak cocok
         if (empty($unmatchedGoals)) {

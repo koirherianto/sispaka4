@@ -16,6 +16,7 @@
 @section('content')
 
     @include('adminlte-templates::common.errors')
+    @include('flash::message')
 
     <div class="card">
 

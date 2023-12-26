@@ -18,7 +18,7 @@
     @include('adminlte-templates::common.errors')
 
     <div class="card p-4">
-        <h1>Result {{ $result['current_goal']->name }} - {{ $result['current_goal']->code_name }}</h1>
+        <h1>Result {{ $result['current_goal']->name ?? '' }} - {{ $result['current_goal']->code_name ?? '' }}</h1>
         <div class="alert alert-info">
             @if ($result['is_matched'])
                 Pengguna memiliki penyakit ini. Penyakit ini memiliki {{ count($result['matched_rules']) + count($result['unmatched_goals']) }} gejala, Dari {{ $selectedEvidencesCount }} gejala yang dipilih, {{ count($result['matched_rules']) }} gejala cocok dengan aturan yang ada. Proses pencocokan dilakukan berdasarkan aturan-aturan berikut:
@@ -58,7 +58,6 @@
                 <table class="table table-bordered mt-3">
                     <thead>
                         <tr>
-                            <th>Goal Code</th>
                             <th>Rule Code</th>
                             <th>Evidence Name</th>
                             <th>Evidence Code Name</th>
@@ -67,7 +66,6 @@
                     <tbody>
                         @foreach($result['unmatched_goals'] as $goal)
                             <tr>
-                                <td>{{ $result['current_goal']->code_name }}</td>
                                 <td>{{ $goal['bc_rule_code']->code_name }}</td>
                                 <td>{{ $goal['bc_evidence']->name }}</td>
                                 <td>{{ $goal['bc_evidence']->code_name }}</td>
@@ -82,8 +80,6 @@
                 <table class="table table-bordered mt-3">
                     <thead>
                         <tr>
-                            <th>Goal Code</th>
-                            <th>Rule Code</th>
                             <th>Evidence Name</th>
                             <th>Evidence Code Name</th>
                         </tr>
@@ -91,8 +87,6 @@
                     <tbody>
                         @foreach($result['matched_rules'] as $rule)
                             <tr>
-                                <td>{{ $result['current_goal']->code_name }}</td>
-                                <td>{{ $rule['bc_rule_code']->code_name }}</td>
                                 <td>{{ $rule['bc_evidence']->name }}</td>
                                 <td>{{ $rule['bc_evidence']->code_name }}</td>
                             </tr>

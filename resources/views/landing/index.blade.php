@@ -1,274 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sispaka</title>
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('landing/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('landing/css/fontawesome-all.min.css') }} ">
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('landing/css/slick.css') }} ">
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('landing/css/style.css') }} ">
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('landing/css/custom.css') }} ">
-</head>
-<body>
-<div id="header-holder">
-    <div class="cloud-bg"></div>
-    <nav id="nav" class="navbar navbar-full">
-        <div class="container-fluid">
-            <div class="container container-nav">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="navbar-header">
-                            <button aria-expanded="false" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href="index.html"><img src="{{ URL::asset('landing/images/logo.svg') }}" alt="Hustbee"></a>
-                        </div>
-                        <div style="height: 1px;" role="main" aria-expanded="false" class="navbar-collapse collapse navbar-collapse-centered" id="bs">
-                            <ul class="nav navbar-nav navbar-nav-centered">
-                                <li class="nav-item"><a class="nav-link" href="home-light.html">Light Header</a></li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Hosting Services</a>
-                                    <div class="dropdown-menu custom-dropdown-menu">
-                                        <div class="dropdown-items-holder">
-                                            <div class="items-with-icon">
-                                                <div class="row">
-                                                    <div class="col-xs-12 col-sm-6">
-                                                        <a href="webhosting.html" class="link-with-icon">
-                                                            <span class="icon"><img src="{{ URL::asset('landing/images/server1.svg') }}" alt=""></span>
-                                                            <span class="text">Web Hosting</span>
-                                                        </a>
-                                                        <a href="cloudhosting.html" class="link-with-icon">
-                                                            <span class="icon"><img src="{{URL::asset('landing/images/server2.svg') }}" alt=""></span>
-                                                            <span class="text">Cloud Hosting</span>
-                                                        </a>
-                                                        <a href="vpshosting.html" class="link-with-icon">
-                                                            <span class="icon"><img src="{{ URL::asset('landing/images/server3.svg') }}" alt=""></span>
-                                                            <span class="text">VPS Hosting</span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-xs-12 col-sm-6">
-                                                        <a href="wordpresshosting.html" class="link-with-icon">
-                                                            <span class="icon"><img src="{{ URL::asset('landing/images/server4.svg') }}" alt=""></span>
-                                                            <span class="text">Wordpress Hosting</span>
-                                                        </a>
-                                                        <a href="dedicatedhosting.html" class="link-with-icon">
-                                                            <span class="icon"><img src="{{ URL::asset('landing/images/server5.svg') }}" alt=""></span>
-                                                            <span class="text">Dedicated Hosting</span>
-                                                        </a>
-                                                        <a href="domains.html" class="link-with-icon">
-                                                            <span class="icon"><img src="{{ URL::asset('landing/images/server6.svg') }}" alt=""></span>
-                                                            <span class="text">Domain Names</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="items">
-                                                <div class="row">
-                                                    <div class="col-xs-12 col-sm-6">
-                                                        <a href="#" class="link">Hustbee Features</a>
-                                                    </div>
-                                                    <div class="col-xs-12 col-sm-6">
-                                                        <a href="#" class="link">Website builder</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="domains.html">Domains</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="contact.html">Support</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="about.html">About</a></li>
-                                        <li><a class="dropdown-item" href="blog.html">Blog</a></li>
-                                        <li><a class="dropdown-item" href="privacy.html">Privacy</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <ul class="nav navbar-nav navbar-right other-navbar ">
-                                <li class="nav-item "><a class="nav-link" href="login.html">Login</a></li>
-                                <li class="nav-item"><a class="nav-link" href="signup.html">Sign up</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <div id="top-content" class="container-fluid">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="main-slider">
-                        <div class="slide">
-                            <div class="row rtl-row">
-                                <div class="col-sm-5">
-                                    <div class="img-holder">
-                                        <img src="{{ URL::asset('landing/images/slide-img1.png') }}" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-sm-7">
-                                    <div class="b-text">Buat Sistem Pakar <br>Tanpa Kode</div>
-                                    <div class="m-text">Jangan biarkan penelitian Sistem Pakar anda berakhir pada jurnal yang <span class="bold">tidak terbaca</span></div>
-                                    <a href="#" class="hbtn hbtn-primary hbtn-lg">Hosting Services</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slide">
-                            <div class="row rtl-row">
-                                <div class="col-sm-5">
-                                    <div class="img-holder">
-                                        <img src="{{ URL::asset('landing/images/slide-img2.png') }}" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-sm-7">
-                                    <div class="b-text">Create your first<br>website today.</div>
-                                    <div class="m-text">Starting at only <span class="bold">$2.38/mo*</span></div>
-                                    <a href="#" class="hbtn hbtn-primary hbtn-lg">Create now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slide">
-                            <div class="row rtl-row">
-                                <div class="col-sm-5">
-                                    <div class="img-holder">
-                                        <img src="{{ URL::asset('landing/images/slide-img3.png') }}" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-sm-7">
-                                    <div class="b-text">Build your site<br>with page builder</div>
-                                    <div class="m-text">Starting at only <span class="bold">$2.38/mo*</span></div>
-                                    <a href="#" class="hbtn hbtn-primary hbtn-lg">Learn more</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slide">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <div class="main-domain-search-holder">
-                                        <div class="b-text">Simple, affordable<br>Web Hosting</div>
-                                        <form>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="input-items">
-                                                        <input type="text" class="form-control domain-input" name="domain" placeholder="My domain name" autocapitalize="none" />
-                                                        <span class="input-items-btn">
-                                                            <input type="submit" class="btn search" value="Search" />
-                                                            <input type="submit" name="transfer" class="btn transfer" value="Transfer" />
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                        <div class="m-text">Starting at only <span class="bold">$2.38/mo*</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="domain-search-holder container-fluid">
-    <div class="container">
-        <form>
-            <div class="row">
-                <div class="col-sm-12 col-md-4 col-lgmd-4"><div class="title">Search Expert System</div></div>
-                <div class="col-sm-8 col-md-5 col-lgmd-6">
-                    <input class="domain-input" type="text" placeholder="Search Expert System"> 
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="ThemeStarz">
+
+    <link href="{{ asset('landing2/fonts/font-awesome.css') }} " rel="stylesheet" type="text/css">
+    <link href="{{ asset('landing2/fonts/elegant-fonts.css') }}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('landing2/bootstrap/css/bootstrap.css') }} " type="text/css">
+    <link rel="stylesheet" href="{{ asset('landing2/css/magnific-popup.css') }} " type="text/css">
+    <link rel="stylesheet" href="{{ asset('landing2/css/style.css') }} " type="text/css">
+    <meta name="description" content="Sispaka - Platform Sistem Pakar Berbasis Web tanpa Kode. Buat dan kelola sistem pakar. Daftarkan diri Anda, buat proyek, dan jelajahi pengetahuan medis.">
+
+    <title>Sispaka - Expert System Platform </title>
+
+    {{-- beda template --}}
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('landing/css/style.css') }} ">
+
+    <style>
+        body { background-color: #f3f3f3; }
+    </style>
+
+</head>
+
+<body>
+<div class="page-wrapper">
+    @include('landing.layout.header')
+    <div class="content-wrapper">
+        <div class="content-main animate">
+            <div class="container">
+                <h1 class="font-size-90">Sispaka</h1>
+                <h2 class="opacity-60">Cari & Buat Sistem Pakar Tanpa Code</h2>
+                <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
+                    <form class="form">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="email" placeholder="Search Expert System">
+                            <span class="input-group-btn">
+                                <button class="btn" type="submit"><i class="arrow_right"></i></button>
+                            </span>
+                        </div>
+                        <p class="note">*Only relevant information, no spam</p>
+                    </form>
+
+                    <!--end form-->
                 </div>
-                <div class="col-sm-4 col-md-3 col-lgmd-2">
-                    <button type="submit">Search</button>
-                </div>
+                <!--end col-md-10-->
             </div>
-        </form>
+            <!--end container-->
+        </div>
+        <!--end content-main-->
+        <div class="background-wrapper">
+            <div id="background-content">
+                <ul class="parallax" id="scene">
+                    <li class="layer opacity-90" data-depth="0.80"><img src="{{ asset('landing2/img/parallax-4.svg') }} " alt=""></li>
+                    <li class="layer opacity-90" data-depth="0.60"><img src="{{ asset('landing2/img/parallax-3.svg') }}" alt=""></li>
+                    <li class="layer opacity-90" data-depth="0.40"><img src="{{ asset('landing2/img/parallax-2.svg') }}" alt=""></li>
+                    <li class="layer opacity-90" data-depth="0.20"><img src="{{ asset('landing2/img/parallax-1.svg') }}" alt=""></li>
+                </ul>
+            </div>
+        </div>
+        <!--end background-wrapper-->
     </div>
+    <!--end content-wrapper-->
+    <footer>
+        <div class="social-icons animate">
+            {{-- <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-youtube"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="#"><i class="fa fa-pinterest"></i></a>
+            <a href="#"><i class="fa fa-google-plus"></i></a> --}}
+        </div>
+        <!--end social-icons-->
+    </footer>
+    
 </div>
+<!--end page-wrapper-->
 
 <div class="latest-news container-fluid">
     <div class="container">
         <div class="row">
             <div class="col-sm-8">
                 <div class="row-title">
-                    Expert System Random
+                    Expert System Platform
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="main-btn-holder">
-                    <a href="blog.html" class="hbtn hbtn-default">View more</a>
+                    <a href="{{ route('blogs') }}" class="hbtn hbtn-default">View more</a>
                 </div>
             </div>
         </div>
-        <div class="row">
+        @php $counter = 0; @endphp
+        @foreach ($projects as $project)
+            @if ($counter % 3 == 0)
+                <div class="row">
+            @endif
             <div class="col-sm-6 col-md-4">
-                <div class="post-box blue-bg">
+                <div class="post-box blue-bg" style="background-image: url('{{ $project->getFirstMediaUrl('thumbnail') }}'); background-size: cover; background-position: center;">
                     <div class="post-img"></div>
-                    <span class="badge badge-danger">Hot</span>
-                    <div class="post-title">Discover our new website builder</div>
-                    <div class="post-link"><a href="#">Learn more</a></div>
+                    <span class="badge badge-danger">{{ $project->methods[0]->name }}</span>
+                    <div class="post-title">{{ $project->title }}</div>
+                    <div class="post-link"><a href="{{ route('blog', $project->slug) }}">Try Expert System</a></div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="post-box grey-bg">
-                    <div class="post-img"></div>
-                    <span class="badge badge-info">Hot</span>
-                    <div class="post-title">New Data center in Germany & USA</div>
-                    <div class="post-link"><a href="#">Learn more</a></div>
+            @php $counter++; @endphp
+            @if ($counter % 3 == 0)
                 </div>
+            @endif
+        @endforeach
+        @if ($counter % 3 != 0)
             </div>
-            <div class="col-sm-12 col-md-4">
-                <div class="post-box yellow-bg">
-                    <div class="post-img"></div>
-                    <span class="badge badge-dark">Hot</span>
-                    <div class="post-title">Discover our newwebsite builder</div>
-                    <div class="post-link"><a href="#">Learn more</a></div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <div class="post-box blue-bg">
-                    <div class="post-img"></div>
-                    <span class="badge badge-danger">Hot</span>
-                    <div class="post-title">Discover our new website builder</div>
-                    <div class="post-link"><a href="#">Learn more</a></div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="post-box grey-bg">
-                    <div class="post-img"></div>
-                    <span class="badge badge-info">Hot</span>
-                    <div class="post-title">New Data center in Germany & USA</div>
-                    <div class="post-link"><a href="#">Learn more</a></div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-4">
-                <div class="post-box yellow-bg">
-                    <div class="post-img"></div>
-                    <span class="badge badge-dark">Hot</span>
-                    <div class="post-title">Discover our newwebsite builder</div>
-                    <div class="post-link"><a href="#">Learn more</a></div>
-                </div>
-            </div>
-        </div>
+        @endif
     </div>
 </div>
 
 
-<script src="{{ URL::asset('landing/js/jquery.min.js') }}"></script>
-<script src="{{ URL::asset('landing/js/bootstrap.min.js') }}"></script> 
-<script src="{{ URL::asset('landing/js/slick.min.js') }}"></script> 
-<script src="{{ URL::asset('landing/js/main.js') }}"></script> 
+@include('landing.layout.modals')
+
+<script  src="{{ asset('landing2/js/jquery-2.2.1.min.js') }}"></script>
+<script  src="http://maps.google.com/maps/api/js"></script>
+<script  src="{{ asset('landing2/bootstrap/js/bootstrap.min.js') }}"></script>
+<script  src="{{ asset('landing2/js/jquery.validate.min.js') }}"></script>
+<script  src="{{ asset('landing2/js/jquery.magnific-popup.min.js') }}"></script>
+<script  src="{{ asset('landing2/js/jquery.plugin.min.js') }}"></script>
+<script  src="{{ asset('landing2/js/jquery.countdown.min.js') }}"></script>
+<script  src="{{ asset('landing2/js/jquery.parallax.min.js') }}"></script>
+<script  src="{{ asset('landing2/js/custom.js') }}"></script>
+
+<script>
+
+    //  Map
+
+    var latitude = 34.038405;
+    var longitude = -117.946944;
+    var markerImage = "{{ asset('landing2/img/map-marker.png') }} ";
+    var mapTheme = "light";
+    var mapElement = "map";
+
+    $(".modal").on("shown.bs.modal", function (e) {
+        google.maps.event.addDomListener(window, 'load', simpleMap(latitude, longitude, markerImage, mapTheme, mapElement));
+    });
+
+    // Background
+
+    $('#scene').parallax({
+        calibrateX: true,
+        calibrateY: true,
+        originX: -1.0,
+        scalarX: 1400
+    });
+
+
+
+</script>
+
 </body>
-</html>

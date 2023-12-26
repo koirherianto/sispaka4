@@ -21,7 +21,7 @@
                                 <th>Goal</th>
                                 <th>Evidence</th>
                                 <th>Code Rule</th>
-                                <th colspan="1">Action</th>
+                                <th colspan="1">Act</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -1693,7 +1693,7 @@ nav.navbar .nav .open > a:hover, nav.navbar .nav .open > a:focus {
 .latest-news {
     padding-top: 80px;
     padding-bottom: 80px;
-    background-color: #eaf2fe;
+    background-color: white.200;
 }
 
 .latest-news .row-title {

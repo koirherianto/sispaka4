@@ -131,6 +131,7 @@ class ProjectController extends AppBaseController
      */
     public function update($id, UpdateProjectRequest $request)
     {
+        
         $project = $this->projectRepository->find($id);
 
         if (empty($project)) {
@@ -143,14 +144,14 @@ class ProjectController extends AppBaseController
         unset($input['method_id']); // method tidak boleh diupdate
         unset($input['user_id']); // user tidak boleh diupdate
         unset($input['status_publish']); // status_publish tidak boleh diupdate
-
+        
         // save thumnail using spatie media library
         if ($request->hasFile('thumbnail')) {
             // project hanya memiliki 1 thumbnail
             $project->clearMediaCollection('thumbnail');
             $project->addMediaFromRequest('thumbnail')->toMediaCollection('thumbnail');
         }
-
+        
         $project = $this->projectRepository->update($input, $id);
 
         Flash::success('Project updated successfully.');

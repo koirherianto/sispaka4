@@ -47,7 +47,10 @@ class BcRuleController extends AppBaseController
                     $evidenceQuery->whereIn('id', $backwardChaining->bcEvidences->pluck('id'));
                 });
             })
+            ->orderBy('id', 'desc')
+            ->orderBy('id', 'desc')
             ->paginate(10);
+
 
         $bcRuleCodes = $this->indexRulesCode();
         $dataRelasi =  $this->getDataRelasi();    
