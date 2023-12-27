@@ -75,10 +75,19 @@ class ProjectController extends AppBaseController
             $input['user_id'] = $user->id;
         }
 
-        DB::transaction(function () use ($input) {
+        DB::transaction(function () use ($input, $user) {
             $project = $this->projectRepository->create($input);
             $project->methods()->sync($input['method_id']);
-            $project->users()->sync([Auth::user()->id]);
+            $project->users()->sync([$user->id]);
+
+            Contributor::create([
+                'project_id' => $project->id,
+                'user_id' => $user->id,
+                'name' => $user->name,
+                'contribution' => 'Project Owner',
+                'email' => $user->email,
+                'link' => null
+            ]);
 
             $method = Method::find($input['method_id']);
 

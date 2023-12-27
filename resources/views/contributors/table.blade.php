@@ -9,7 +9,7 @@
                 @can('contributor.index')
                 @endcan
                 @can('contributor.index')
-                <a href="{{ route('contributors.refresh') }}" class="btn btn-info float-right"> Refresh Link To Account</a>
+                <a href="{{ route('contributors.refresh') }}" class="btn btn-info float-right"> Refresh Account</a>
                 <a href="{{ route('contributors.create') }}" class="btn btn-primary float-right"> Add Contributor </a>
                 @endcan
             </div>
