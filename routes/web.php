@@ -28,6 +28,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('users', UserController::class);
     Route::resource('roles', App\Http\Controllers\RoleController::class);
     Route::resource('permissions', App\Http\Controllers\PermissionController::class);
+    Route::get('/projects/publish', [App\Http\Controllers\ProjectController::class, 'publish'])->name('projects.publish');
+    Route::get('/projects/unpublish', [App\Http\Controllers\ProjectController::class, 'unpublish'])->name('projects.unpublish');
     Route::resource('projects', App\Http\Controllers\ProjectController::class);
     Route::resource('methods', App\Http\Controllers\MethodController::class);
 

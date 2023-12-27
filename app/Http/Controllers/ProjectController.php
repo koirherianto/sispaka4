@@ -203,43 +203,73 @@ class ProjectController extends AppBaseController
         return redirect(route('projects.index'));
     }
 
-    public function destroyy($id)
-    {
-        $project = $this->projectRepository->find($id);
+    public function publish() {
+        // current project
+        $project = Project::find(Auth::user()->session_project);
+        $backwardChaining = $project->backwardChaining;
+    
+        // minimal lengths
+        $minContentLength = 100;
+        $minGoalLength = 2;
+        $minEvidenceLength = 2;
+        $minBcRuleLength = 2;
+        $minRuleCodeLength = 2;
+    
+        $errorMessages = [];
+    
+        // check project content length
+        if (strlen($project->content) < $minContentLength) {
+            $errorMessages[] = 'Project content must be at least ' . $minContentLength . ' characters.';
+        }
+    
+        // check backward chaining elements
+        if (count($backwardChaining->bcGoals) < $minGoalLength) {
+            $errorMessages[] = 'Project goal must have at least ' . $minGoalLength . ' items.';
+        }
+    
+        if (count($backwardChaining->bcEvidences) < $minEvidenceLength) {
+            $errorMessages[] = 'Project evidence must have at least ' . $minEvidenceLength . ' items.';
+        }
+    
+        $bcRuleCodes = $backwardChaining->bcRuleCodes;
 
-        if (empty($project)) {
-            Flash::error('Project not found');
-            return redirect(route('projects.index'));
+        if (count($bcRuleCodes) < $minEvidenceLength) {
+            $errorMessages[] = 'Project rule code must have at least ' . $minEvidenceLength . ' items.';
+        }
+    
+        foreach ($bcRuleCodes as $bcRuleCode) {
+            if (count($bcRuleCode->bcRules) < $minBcRuleLength) {
+                $errorMessages[] = 'Project rule code ' . $bcRuleCode->code_name . ' must have at least ' . $minBcRuleLength . ' items.';
+            }
+        }
+    
+        // check if project is already published
+        if ($project->isPublished()) {
+            $errorMessages[] = 'Project is already published.';
+        }
+    
+        // if there are error messages, redirect with the messages
+        if (!empty($errorMessages)) {
+            Flash::error(implode('<br>', $errorMessages));
+            return redirect(route('projects.edit', $project->id));
         }
 
-        DB::transaction(function () use ($project, $id) {
-            // Remove session_project from users with this project
-            User::where('session_project', $id)->update(['session_project' => null]);
-
-            // Delete associated backward chaining entities
-            $project->backwardChaining->bcRuleCodes()->delete();
-            BcRule::whereIn('bc_goal_id', $project->backwardChaining->bcGoals()->pluck('id'))->delete();
-            $project->backwardChaining->bcEvidences()->each(function ($evidence) {
-                $evidence->bcRules()->delete();
-            });
-            $project->backwardChaining->bcEvidences()->delete();
-            $project->backwardChaining->bcGoals()->delete();
-            $project->backwardChaining->delete();
-
-            // Detach methods and users
-            $project->methods()->detach();
-            $project->users()->detach();
-
-            // hapus thumbnail
-            $project->clearMediaCollection('thumbnail');
-
-            // Delete the project
-            $this->projectRepository->delete($id);
-
-        }, 3);
-
-        Flash::success('Project deleted successfully.');
-        return redirect(route('projects.index'));
+        // if there are no error messages, publish the project
+        $project->status_publish = 'yes';
+        $project->save();
+    
+        Flash::success('Project published successfully.');
+        return redirect(route('projects.edit', $project->id));
+    }
+    
+    // unpublish project
+    public function unpublish() {
+        $project = Project::find(Auth::user()->session_project);
+        $project->status_publish = 'no';
+        $project->save();
+    
+        Flash::success('Project unpublished successfully.');
+        return redirect(route('projects.edit', $project->id));
     }
 
     function changeProject($id) {

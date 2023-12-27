@@ -74,10 +74,12 @@ class BcRuleController extends AppBaseController
         $dataRelasi = [];
         
         foreach ($bcGoals as $bcGoal) {
-            $bcEvidenceCodes = '';
+            $bcEvidenceCodes = 'IF (';
             foreach ($bcGoal->bcRules as $bcRules) {
-                    $bcEvidenceCodes .= $bcRules->bcEvidence->code_name . ', ';
+                    $bcEvidenceCodes .= $bcRules->bcEvidence->code_name . ' AND ';
             }
+
+            $bcEvidenceCodes .= ') THEN ' . $bcGoal->code_name;
             
             $dataRelasi[] = [
                 'evidenceCodes' => $bcEvidenceCodes,    

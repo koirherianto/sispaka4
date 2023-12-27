@@ -89,4 +89,10 @@ class Project extends Model implements HasMedia
         return $slug;
     }
 
+    // is published
+    public function isPublished(): bool
+    {
+        return $this->status_publish === 'yes';
+    }
+
 }

@@ -30,6 +30,11 @@
 
         <div class="card-footer d-flex justify-content-between">
             <div>
+                @if (!$project->isPublished())
+                    <a href="{{ route('projects.publish') }}" class="btn btn-dark"> Publish </a> 
+                @else
+                    <a href="{{ route('projects.unpublish') }}" class="btn btn-dark"> Unpublish </a>
+                @endif
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
                 {!! Form::close() !!}
                 <a href="{{ route('projects.index') }}" class="btn btn-default"> Cancel </a>
