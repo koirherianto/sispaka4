@@ -8,6 +8,7 @@ use App\Http\Controllers\AppBaseController;
 use App\Repositories\ProjectRepository;
 use Illuminate\Http\Request;
 use App\Models\BackwardChaining\BackwardChaining;
+use App\Models\Contributor;
 use App\Models\Project;
 use App\Models\Method;
 use App\Models\User;
@@ -43,6 +44,11 @@ class ProjectController extends AppBaseController
         
         if ($user->hasRole('user')) {
             $projects = $user->projects()->paginate(20);
+        }
+
+         // Pastikan hanya menggunakan with jika $projects tidak null
+        if ($projects) {
+            $projects->load('contributors');
         }
 
         return view('projects.index', compact('projects','user'));
@@ -203,6 +209,12 @@ class ProjectController extends AppBaseController
             // Detach methods and users
             $project->methods()->detach();
             $project->users()->detach();
+
+            // delete contributors
+            $project->contributors()->delete();
+
+            // Delete thumbnail
+            $project->clearMediaCollection('thumbnail');
 
             $this->projectRepository->delete($id);
 

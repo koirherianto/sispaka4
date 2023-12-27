@@ -41,19 +41,27 @@
                             <p class="text-muted mt-3 mb-0">{{ $project->seo_description }}</p>
 
                             <div class="mt-3 pt-1">
-                                <p class="mb-0"><i
-                                        class="font-size-15 align-middle text-primary"></i>
-                                    Status Publish : {{ $project->status_publish }}</p>
+                                <p class="mb-0"><i class="font-size-15 align-middle text-primary"></i>
+                                    Status Publish: {{ $project->status_publish }}</p>
                                 <p class="mb-0 mt-2"><i class="font-size-15 align-middle text-primary"></i>
                                     Name:
-                                    @foreach ($project->users as $user)
-                                    {{ $user->name }}
+                                    @foreach ($project->users as $index => $user)
+                                        {{ $user->name }}
+                                        @if ($index < count($project->users) - 1)
+                                            {{ ',' }}
+                                        @endif
                                     @endforeach
                                 </p>
                                 <p class="mb-0 mt-2"><i class="font-size-15 align-middle text-primary"></i>
                                     Contributor:
+                                    @foreach ($project->contributors as $index => $contributor)
+                                        {{ $contributor->name }}
+                                        @if ($index < count($project->contributors) - 1)
+                                            {{ ',' }}
+                                        @endif
+                                    @endforeach
                                 </p>
-                            </div>
+                            </div>                            
 
                             <div class="d-flex gap-2 pt-4">
                                 @if(Auth::user()->session_project == $project->id)
