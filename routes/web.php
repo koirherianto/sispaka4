@@ -32,6 +32,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/projects/unpublish', [App\Http\Controllers\ProjectController::class, 'unpublish'])->name('projects.unpublish');
     Route::resource('projects', App\Http\Controllers\ProjectController::class);
     Route::resource('methods', App\Http\Controllers\MethodController::class);
+    Route::get('/contributors/refresh', [App\Http\Controllers\ContributorController::class, 'refresh'])->name('contributors.refresh');
+    Route::resource('contributors', App\Http\Controllers\ContributorController::class);
 
     Route::post('/changeProject/{id}', [App\Http\Controllers\ProjectController::class, 'changeProject'])->name('changeProject');
     Route::post('/unmanageProject/{id}', [App\Http\Controllers\ProjectController::class, 'unmanageProject'])->name('unmanageProject');

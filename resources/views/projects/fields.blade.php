@@ -2,7 +2,7 @@
 <input type="hidden" name="slug" value="-">
 
 @if ($isCreatedPage && auth()->user()->hasRole('super-admin'))
-    <div class="form-group col-sm-6">
+    <div class="form-group col-sm-12">
         {!! Form::label('user_id', 'User:') !!}
         {!! Form::select('user_id', $users, null, ['class' => 'form-control', 'required']) !!}
     </div>
@@ -12,7 +12,7 @@
 
 
 <!-- Title Field -->
-<div class="form-group col-sm-6 mb-2">
+<div class="form-group col-sm-12 mb-2">
     {!! Form::label('title', 'Title:') !!}
     {!! Form::text('title', null, ['class' => 'form-control', 'required', 'maxlength' => 100]) !!}
     @error('title') 
@@ -24,7 +24,7 @@
 
 @if ($isCreatedPage)
     <!-- Method hanya saat create, tidak bisa diubah -->
-    <div class="form-group col-sm-6">
+    <div class="form-group col-sm-12">
         {!! Form::label('method_id', 'Method: (it cannot be changed later)') !!}
         {!! Form::select('method_id', $methods->pluck('name', 'id'), null, [
             'class' => 'form-control',
@@ -42,7 +42,7 @@
 @if(!$isCreatedPage)
 
     <!-- Seo Keyword Field -->
-    <div class="form-group col-sm-6 mb-2">
+    <div class="form-group col-sm-12 mb-2">
         {!! Form::label('seo_keyword', 'Seo Keyword:') !!}
         {!! Form::text('seo_keyword', null, ['class' => 'form-control', 'maxlength' => 100]) !!}
         @error('seo_keyword') 
@@ -53,7 +53,7 @@
     </div>
 
     <!-- Seo Description Field -->
-    <div class="form-group col-sm-6 mb-2">
+    <div class="form-group col-sm-12 mb-2">
         {!! Form::label('seo_description', 'Seo Description:') !!}
         {!! Form::text('seo_description', null, ['class' => 'form-control', 'maxlength' => 160]) !!}
         @error('seo_description') 
@@ -64,7 +64,7 @@
     </div>
 
     {{-- input thumnail --}}
-    <div class="form-group col-sm-6 mb-2">
+    <div class="form-group col-sm-12 mb-0">
         @if(isset($project) && $project->hasMedia('thumbnail'))
         {!! Form::label('thumbnail', 'Thumbnail Blog (Isi Untuk Memperbarui Thumbnail):') !!}
         @else

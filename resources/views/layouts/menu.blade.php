@@ -330,6 +330,15 @@
         </a>
     </li>
     @endcan
+
+    @can('contributor.index')
+    <li>
+        <a href="{{ route('contributors.index') }}">
+            <i class="bx bx-home-alt icon nav-icon"></i>
+            <span class="menu-item">Contributors</span>
+            </a>
+    </li>
+    @endcan
 @endif
 
 @if (Auth::user()->sessionProjecthasBackwardChainingMethod())
@@ -389,3 +398,14 @@
     @endcan
 @endif
 
+
+
+
+@can('contributor.index')
+<li>
+    <a href="{{ route('contributors.index') }}">
+        <i class="bx bx-home-alt icon nav-icon"></i>
+        <span class="menu-item">Contributors</span>
+        </a>
+</li>
+@endcan
