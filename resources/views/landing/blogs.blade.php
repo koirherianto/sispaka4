@@ -9,7 +9,7 @@
     <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
         <form class="form" action="{{ route('blogs') }}">
             <div class="input-group ">
-                <input type="text" class="form-control" name="search" placeholder="Search Expert System">
+                <input type="text" class="form-control" name="search" placeholder="Search Expert System" value="{{ $keySearch }}">
                 <span class="input-group-btn">
                     <button class="btn" type="submit"><i class="arrow_right"></i></button>
                 </span>

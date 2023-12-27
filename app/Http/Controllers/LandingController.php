@@ -16,7 +16,7 @@ use App\Http\Controllers\BackwardChaining\BackwardChaningTryController;
 class LandingController extends Controller
 {
     function index() {
-        $projects = Project::inRandomOrder()->take(6)->get();
+        $projects = Project::where('status_publish','yes')->inRandomOrder()->take(6)->get();
 
         return view('landing.index', compact('projects'));
     }
@@ -24,12 +24,12 @@ class LandingController extends Controller
     function blogs(Request $request) {
 
         if ($request->has('search')) {
-            $projects = Project::where('title', 'like', '%'.$request->search.'%')->get();
+            $projects = Project::where('status_publish','yes')->where('title', 'like', '%'.$request->search.'%')->get();
         }else {
-            $projects = Project::inRandomOrder()->get();
+            $projects = Project::where('status_publish','yes')->inRandomOrder()->get();
         }
 
-        return view('landing.blogs', compact('projects'));
+        return view('landing.blogs', compact('projects'))->with('keySearch', $request->search);
     }
 
     function blog($slug) {
