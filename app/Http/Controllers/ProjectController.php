@@ -166,6 +166,13 @@ class ProjectController extends AppBaseController
             $project->clearMediaCollection('thumbnail');
             $project->addMediaFromRequest('thumbnail')->toMediaCollection('thumbnail');
         }
+
+        // jurnal
+        if ($request->hasFile('jurnal')) {
+            // project hanya memiliki 1 jurnal
+            $project->clearMediaCollection('jurnal');
+            $project->addMediaFromRequest('jurnal')->toMediaCollection('jurnal');
+        }
         
         $project = $this->projectRepository->update($input, $id);
 
@@ -213,7 +220,8 @@ class ProjectController extends AppBaseController
             // delete contributors
             $project->contributors()->delete();
 
-            // Delete thumbnail
+            // Delete thumbnail & jurnal
+            $project->clearMediaCollection('jurnal');
             $project->clearMediaCollection('thumbnail');
 
             $this->projectRepository->delete($id);

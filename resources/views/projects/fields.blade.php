@@ -64,7 +64,7 @@
     </div>
 
     {{-- input thumnail --}}
-    <div class="form-group col-sm-12 mb-0">
+    <div class="form-group col-sm-12 mb-2">
         @if(isset($project) && $project->hasMedia('thumbnail'))
         {!! Form::label('thumbnail', 'Thumbnail Blog (Isi Untuk Memperbarui Thumbnail):') !!}
         @else
@@ -83,6 +83,27 @@
         @enderror
     </div>
 
+    {{-- input file --}}
+    <div class="form-group col-sm-12 mb-2">
+        @if(isset($project) && $project->hasMedia('jurnal'))
+            {!! Form::label('jurnal', 'Research Journal (Isi Untuk Memperbarui jurnal):') !!}
+        @else
+            {!! Form::label('jurnal', 'Research Journal PDF (Optional):') !!}
+        @endif
+        <div style="display: flex; align-items: center;">
+            {!! Form::file('jurnal', ['class' => 'form-control', 'id' => 'formFile', 'accept' => 'application/pdf']) !!}
+            @if(isset($project) && $project->hasMedia('jurnal'))
+                <a href="{{ $project->getFirstMediaUrl('jurnal') }}" target="_blank" class="btn btn-primary mx-4">
+                    Download
+                </a>
+            @endif
+        </div>
+        @error('jurnal') 
+            <span class="invalid-feedback d-block" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
 
     <!-- Content Field -->
     <div class="form-group col-sm-12 col-lg-12 mb-2">

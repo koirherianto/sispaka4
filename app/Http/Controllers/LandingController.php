@@ -35,9 +35,10 @@ class LandingController extends Controller
     function blog($slug) {
 
         $project = Project::where('slug', $slug)->first();
-        $goals = $project->backwardChaining->bcGoals()->orderBy('created_at', 'desc')->pluck('name', 'id');    
+        $goals = $project->backwardChaining->bcGoals()->orderBy('created_at', 'desc')->pluck('name', 'id'); 
+        $contributors = $project->contributors()->orderBy('created_at', 'desc')->get();   
 
-        return view('landing.blog', compact('project', 'goals'));
+        return view('landing.blog', compact('project', 'goals','contributors'));
     }
 
     public function selectEvidences(Request $request)   

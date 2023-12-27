@@ -41,7 +41,34 @@
                 {!! Form::close() !!}
                 
                 {!! $project->content !!}
-            </div>
+
+                <br>
+                <h5>Contributor This Project</h5    >
+                <ol class="list-group list-group-numbered">
+                    @foreach ($contributors as $contributor)
+                    <a href="{{ $contributor->link }}">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                            <div class="fw-bold">{{ $contributor->name }}</div>
+                            {{ $contributor->contribution }}
+                            </div>
+                        </li>
+                    </a>
+                    @endforeach
+                </ol>
+
+                {{-- tampilkan card download jurnal--}}
+                @if($project->hasMedia('jurnal'))
+                    <div class="card text-center border-2 mt-5">
+                        <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text">Jurnal Research</p>
+                        <a href="{{ $project->getFirstMediaUrl('jurnal') }}" class="btn btn-primary">Download </a>
+                        </div>
+                    </div>
+                @endif
+                
+                
             <div class="col-md-2">
                 @include('adminlte-templates::common.errors')
                 @include('flash::message')
