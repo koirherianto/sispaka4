@@ -22,10 +22,10 @@ class UserController extends AppBaseController
 
     public function __construct(UserRepository $userRepo)
     {
-        // $this->middleware('permission:user.index', ['only' => ['index','show']]);
-        // $this->middleware('permission:user.create', ['only' => ['create','store']]);
-        // $this->middleware('permission:user.edit', ['only' => ['edit','update']]);
-        // $this->middleware('permission:user.destroy', ['only' => ['destroy']]);
+        $this->middleware('permission:user.index', ['only' => ['index','show']]);
+        $this->middleware('permission:user.create', ['only' => ['create','store']]);
+        $this->middleware('permission:user.edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:user.destroy', ['only' => ['destroy']]);
         $this->userRepository = $userRepo;
     }
 
@@ -34,7 +34,7 @@ class UserController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $users = $this->userRepository->paginate(10);
+        $users = $this->userRepository->paginate(100);
 
         return view('users.index')->with('users', $users);
     }

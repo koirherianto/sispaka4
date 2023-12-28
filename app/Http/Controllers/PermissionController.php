@@ -17,10 +17,10 @@ class PermissionController extends AppBaseController
 
     public function __construct(PermissionRepository $permissionRepo)
     {
-        // $this->middleware('permission:Permission.index', ['only' => ['index','show']]);
-        // $this->middleware('permission:Permission.create', ['only' => ['create','store']]);
-        // $this->middleware('permission:Permission.edit', ['only' => ['edit','update']]);
-        // $this->middleware('permission:Permission.destroy', ['only' => ['destroy']]);
+        $this->middleware('permission:permission.index', ['only' => ['index','show']]);
+        $this->middleware('permission:permission.create', ['only' => ['create','store']]);
+        $this->middleware('permission:permission.edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:permission.destroy', ['only' => ['destroy']]);
         $this->permissionRepository = $permissionRepo;
     }
 
@@ -29,7 +29,7 @@ class PermissionController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $permissions = $this->permissionRepository->paginate(10);
+        $permissions = $this->permissionRepository->paginate(100);
 
         return view('permissions.index')->with('permissions', $permissions);
     }

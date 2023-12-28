@@ -20,10 +20,10 @@ class RoleController extends AppBaseController
 
     public function __construct(RoleRepository $roleRepo)
     {
-        // $this->middleware('permission:role.index', ['only' => ['index','show']]);
-        // $this->middleware('permission:role.create', ['only' => ['create','store']]);
-        // $this->middleware('permission:role.edit', ['only' => ['edit','update']]);
-        // $this->middleware('permission:role.destroy', ['only' => ['destroy']]);
+        $this->middleware('permission:role.index', ['only' => ['index','show']]);
+        $this->middleware('permission:role.create', ['only' => ['create','store']]);
+        $this->middleware('permission:role.edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:role.destroy', ['only' => ['destroy']]);
         $this->roleRepository = $roleRepo;
     }
 
@@ -32,7 +32,7 @@ class RoleController extends AppBaseController
      */
     public function index(Request $request) : View
     {
-        $roles = $this->roleRepository->paginate(10);
+        $roles = $this->roleRepository->paginate(100);
 
         return view('roles.index')->with('roles', $roles);
     }
