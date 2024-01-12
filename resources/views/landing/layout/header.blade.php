@@ -8,7 +8,7 @@
             <li><a href="" data-toggle="modal" data-target="#modal-contact-us">Contact</a></li>
             @if (Route::has('login'))
             @auth
-                    <li><a href="{{ url('/home') }}">Dashboard</a></li>
+                    <li><a href="{{ url('/projects') }}">Dashboard</a></li>
                 @else
                     <li><a href="{{ url('/login') }}">Login</a></li>
                     
