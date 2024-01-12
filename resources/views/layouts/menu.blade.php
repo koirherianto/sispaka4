@@ -450,3 +450,13 @@
         </li>
     @endcan
 @endif
+
+<li class="menu-title">Forward Chaining</li>
+@can('forwardChaining.index')
+<li>
+    <a href="{{ route('forwardChainings.index') }}">
+        <i class="bx bx-home-alt icon nav-icon"></i>
+        <span class="menu-item">Forward Chainings</span>
+        </a>
+</li>
+@endcan
