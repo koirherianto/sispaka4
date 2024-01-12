@@ -8,6 +8,7 @@ use App\Http\Controllers\AppBaseController;
 use App\Repositories\ProjectRepository;
 use Illuminate\Http\Request;
 use App\Models\BackwardChaining\BackwardChaining;
+use App\Models\ForwardChaining\ForwardChaining;
 use App\Models\Contributor;
 use App\Models\Project;
 use App\Models\Method;
@@ -84,7 +85,12 @@ class ProjectController extends AppBaseController
         DB::transaction(function () use ($input, $user) {
             $project = $this->projectRepository->create($input);
             $project->methods()->sync($input['method_id']);
-            $project->users()->sync([$user->id]);
+
+            if ($user->hasRole('user')) {
+                $project->users()->sync([$user->id]);
+            }else{
+                $project->users()->sync($input['user_id']);
+            }
 
             Contributor::create([
                 'project_id' => $project->id,
@@ -99,6 +105,12 @@ class ProjectController extends AppBaseController
 
             if ($method->slug === 'backward-chaining') {
                 BackwardChaining::create([
+                    'project_id' => $project->id
+                ]);
+            }
+
+            if ($method->slug === 'forward-chaining') {
+                ForwardChaining::create([
                     'project_id' => $project->id
                 ]);
             }
