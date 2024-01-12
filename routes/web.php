@@ -12,6 +12,14 @@ Route::post('bc/result', [App\Http\Controllers\LandingController::class, 'result
 
 // Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
+// peringatan : jangan jalankan ini di local
+Route::get('storage-link', function () {
+    $targetFolder = storage_path('app/public');
+    $linkFolder = $_SERVER['DOCUMENT_ROOT'] . '/storage';
+    symlink($targetFolder, $linkFolder);
+    echo 'Symlink process successfully completed';
+});
+
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
