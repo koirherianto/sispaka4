@@ -310,7 +310,11 @@
 @can('method.index')
     <li>
         <a href="{{ route('methods.index') }}">
-            <i class="bx bx-home-alt icon nav-icon"></i>
+            <i class="icon nav-icon">
+                <svg class="w-[12px] h-[12px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M1 1v18M1 3.652v9c5.6-5.223 8.4 2.49 14-.08v-9c-5.6 2.57-8.4-5.143-14 .08Z"/>
+                </svg>
+            </i>
             <span class="menu-item">Methods</span>
         </a>
     </li>
@@ -327,7 +331,11 @@
 @can('project.index')
     <li>
         <a href="{{ route('projects.index') }}">
-            <i class="bx bx-home-alt icon nav-icon"></i>
+            <i class="icon nav-icon">
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 14h6m-3 3v-6M1.857 1h4.286c.473 0 .857.384.857.857v4.286A.857.857 0 0 1 6.143 7H1.857A.857.857 0 0 1 1 6.143V1.857C1 1.384 1.384 1 1.857 1Zm10 0h4.286c.473 0 .857.384.857.857v4.286a.857.857 0 0 1-.857.857h-4.286A.857.857 0 0 1 11 6.143V1.857c0-.473.384-.857.857-.857Zm-10 10h4.286c.473 0 .857.384.857.857v4.286a.857.857 0 0 1-.857.857H1.857A.857.857 0 0 1 1 16.143v-4.286c0-.473.384-.857.857-.857Z"/>
+                </svg>
+            </i>
             <span class="menu-item">Projects</span>
         </a>
     </li>
@@ -337,7 +345,14 @@
     @can('project.index')
     <li>
         <a href="{{ route('projects.edit', Auth::user()->session_project) }}">
-            <i class="bx bx-home-alt icon nav-icon"></i>
+            <i class="icon nav-icon">
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="M19 11V9a1 1 0 0 0-1-1h-.757l-.707-1.707.535-.536a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0l-.536.535L12 2.757V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v.757l-1.707.707-.536-.535a1 1 0 0 0-1.414 0L2.929 4.343a1 1 0 0 0 0 1.414l.536.536L2.757 8H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h.757l.707 1.707-.535.536a1 1 0 0 0 0 1.414l1.414 1.414a1 1 0 0 0 1.414 0l.536-.535L8 17.243V18a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-.757l1.707-.708.536.536a1 1 0 0 0 1.414 0l1.414-1.414a1 1 0 0 0 0-1.414l-.535-.536.707-1.707H18a1 1 0 0 0 1-1Z"/>
+                    <path d="M10 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                </g>
+                </svg>
+            </i>
             <span class="menu-item">Project Setting</span>
         </a>
     </li>
@@ -346,7 +361,11 @@
     @can('contributor.index')
     <li>
         <a href="{{ route('contributors.index') }}">
-            <i class="bx bx-home-alt icon nav-icon"></i>
+            <i class="icon nav-icon">
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.333 6.764a3 3 0 1 1 3.141-5.023M2.5 16H1v-2a4 4 0 0 1 4-4m7.379-8.121a3 3 0 1 1 2.976 5M15 10a4 4 0 0 1 4 4v2h-1.761M13 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-4 6h2a4 4 0 0 1 4 4v2H5v-2a4 4 0 0 1 4-4Z"/>
+                </svg>
+            </i>
             <span class="menu-item">Contributors</span>
             </a>
     </li>
@@ -356,18 +375,24 @@
 @if (Auth::user()->sessionProjecthasBackwardChainingMethod())
     <li class="menu-title">Backward Chaining</li>
     @can('backwardChaining.index')
-        <li>
-            <a href="{{ route('backwardChainings.index') }}">
-                <i class="bx bx-home-alt icon nav-icon"></i>
-                <span class="menu-item">Backward Chainings</span>
-            </a>
-        </li>
+    <li>
+        <a href="{{ route('backwardChainings.index') }}">
+            <i class="bx bx-home-alt icon nav-icon"></i>
+            <span class="menu-item">Backward Chainings</span>
+        </a>
+    </li>
     @endcan
 
     @can('bcRuleCode.index')
     <li>
         <a href="{{ route('bcRuleCodes.index') }}">
-            <i class="bx bx-home-alt icon nav-icon"></i>
+            <i class="icon nav-icon">
+                <svg class="w-[12px] h-[12px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="m1.56 6.245 8 3.924a1 1 0 0 0 .88 0l8-3.924a1 1 0 0 0 0-1.8l-8-3.925a1 1 0 0 0-.88 0l-8 3.925a1 1 0 0 0 0 1.8Z"/>
+                <path d="M18 8.376a1 1 0 0 0-1 1v.163l-7 3.434-7-3.434v-.163a1 1 0 0 0-2 0v.786a1 1 0 0 0 .56.9l8 3.925a1 1 0 0 0 .88 0l8-3.925a1 1 0 0 0 .56-.9v-.786a1 1 0 0 0-1-1Z"/>
+                <path d="M17.993 13.191a1 1 0 0 0-1 1v.163l-7 3.435-7-3.435v-.163a1 1 0 1 0-2 0v.787a1 1 0 0 0 .56.9l8 3.925a1 1 0 0 0 .88 0l8-3.925a1 1 0 0 0 .56-.9v-.787a1 1 0 0 0-1-1Z"/>
+                </svg>
+            </i>
             <span class="menu-item">Rule Codes</span>
             </a>
     </li>
@@ -376,7 +401,11 @@
     @can('bcEvidence.index')
         <li>
             <a href="{{ route('bcEvidences.index') }}">
-                <i class="bx bx-home-alt icon nav-icon"></i>
+                <i class="icon nav-icon">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.994 19a8.999 8.999 0 1 1 3.53-17.281M5.995 9l4 4 7-8m-1 8v5m-2.5-2.5h5"/>
+                    </svg>  
+                </i>
                 <span class="menu-item">Evidences / Facts</span>
             </a>
         </li>
@@ -385,7 +414,11 @@
     @can('bcGoal.index')
         <li>
             <a href="{{ route('bcGoals.index') }}">
-                <i class="bx bx-home-alt icon nav-icon"></i>
+                <i class="icon nav-icon">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.147 15.085a7.159 7.159 0 0 1-6.189 3.307A6.713 6.713 0 0 1 3.1 15.444c-2.679-4.513.287-8.737.888-9.548A4.373 4.373 0 0 0 5 1.608c1.287.953 6.445 3.218 5.537 10.5 1.5-1.122 2.706-3.01 2.853-6.14 1.433 1.049 3.993 5.395 1.757 9.117Z"/>
+                    </svg>
+                </i>
                 <span class="menu-item">Goals / Results</span>
             </a>
         </li>
@@ -394,7 +427,11 @@
     @can('bcRule.index')
         <li>
             <a href="{{ route('bcRules.index') }}">
-                <i class="bx bx-home-alt icon nav-icon"></i>
+                <i class="icon nav-icon">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 19 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 9.376v.786l8 3.925 8-3.925v-.786M1.994 14.191v.786l8 3.925 8-3.925v-.786M10 1.422 2 5.347l8 3.925 8-3.925-8-3.925Z"/>
+                    </svg>
+                </i>
                 <span class="menu-item">Rules</span>
             </a>
         </li>
@@ -403,7 +440,11 @@
     @can('bcRule.index')
         <li>
             <a href="{{ route('bcTry.selectGoals') }}">
-                <i class="bx bx-home-alt icon nav-icon"></i>
+                <i class="icon nav-icon">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8.806 5.614-4.251.362-2.244 2.243a1.058 1.058 0 0 0 .6 1.8l3.036.356m9.439 1.819-.362 4.25-2.243 2.245a1.059 1.059 0 0 1-1.795-.6l-.449-2.983m9.187-12.57a1.536 1.536 0 0 0-1.26-1.26c-1.818-.313-5.52-.7-7.179.96-1.88 1.88-5.863 9.016-7.1 11.275a1.05 1.05 0 0 0 .183 1.25l.932.939.937.936a1.049 1.049 0 0 0 1.25.183c2.259-1.24 9.394-5.222 11.275-7.1 1.66-1.663 1.275-5.365.962-7.183Zm-3.332 4.187a2.115 2.115 0 1 1-4.23 0 2.115 2.115 0 0 1 4.23 0Z"/>
+                    </svg>
+                </i>
                 <span class="menu-item">Try / Experiment</span>
             </a>
         </li>
