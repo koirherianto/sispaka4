@@ -470,3 +470,12 @@
         </a>
 </li>
 @endcan
+
+@can('fcEvidence.index')
+<li>
+    <a href="{{ route('fcEvidences.index') }}">
+        <i class="bx bx-home-alt icon nav-icon"></i>
+        <span class="menu-item">Fc Evidences</span>
+        </a>
+</li>
+@endcan

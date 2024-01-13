@@ -1,4 +1,4 @@
-<input type="hidden" name="backward_chaining_id" value="-">
+<input type="hidden" name="forward_chaining_id" value="-">
 
 <!-- Name Field -->
 <div class="form-group col-sm-6 mb-2">

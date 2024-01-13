@@ -30,7 +30,7 @@ class ForwardChaining extends Model
 
     public function fcEvidences(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(\App\Models\FcEvidence::class, 'forward_chaining_id');
+        return $this->hasMany(\App\Models\ForwardChaining\FcEvidence::class, 'forward_chaining_id');
     }
 
     public function fcGoals(): \Illuminate\Database\Eloquent\Relations\HasMany

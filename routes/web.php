@@ -54,9 +54,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('bcTry/selectGoals', [App\Http\Controllers\BackwardChaining\BackwardChaningTryController::class, 'selectGoals'])->name('bcTry.selectGoals');
         Route::post('bcTry/selectEvidences', [App\Http\Controllers\BackwardChaining\BackwardChaningTryController::class, 'selectEvidences'])->name('bcTry.selectEvidences');
         Route::post('bcTry/result', [App\Http\Controllers\BackwardChaining\BackwardChaningTryController::class, 'result'])->name('bcTry.result');
-
     });
 
     Route::resource('forwardChainings', App\Http\Controllers\ForwardChaining\ForwardChainingController::class);
     Route::resource('fcGoals', App\Http\Controllers\ForwardChaining\FcGoalController::class);
+    Route::resource('fcEvidences', App\Http\Controllers\ForwardChaining\FcEvidenceController::class);
 });
