@@ -1,12 +1,11 @@
 @extends('layouts.master')
 
 @section('title')
-        Fc Rule Group Details
-    @endsection
+    Forward Chaining Rule Code Details
+@endsection
 
 @section('page-title')
-    
-    Fc Rule Group Details
+    Forward Chaining Rule Code Details
 @endsection
 
 @section('body')

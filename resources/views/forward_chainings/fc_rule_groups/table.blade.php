@@ -2,7 +2,7 @@
     <div class="card-body">
         <div class="d-flex flex-wrap align-items-center mb-2">
             <h5 class="card-title">
-                Fc Rule Groups 
+                Forward Chaining Rule Codes 
             </h5>
         <div class="ms-auto">
             <div class="dropdown">
