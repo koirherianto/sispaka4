@@ -488,3 +488,12 @@
         </a>
 </li>
 @endcan
+
+@can('fcRule.index')
+<li>
+    <a href="{{ route('fcRules.index') }}">
+        <i class="bx bx-home-alt icon nav-icon"></i>
+        <span class="menu-item">Fc Rules</span>
+        </a>
+</li>
+@endcan
