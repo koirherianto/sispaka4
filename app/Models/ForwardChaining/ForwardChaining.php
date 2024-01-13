@@ -30,16 +30,16 @@ class ForwardChaining extends Model
 
     public function fcEvidences(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(\App\Models\FcEvidence::class, 'backward_chaining_id');
+        return $this->hasMany(\App\Models\FcEvidence::class, 'forward_chaining_id');
     }
 
     public function fcGoals(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(\App\Models\FcGoal::class, 'backward_chaining_id');
+        return $this->hasMany(\App\Models\ForwardChaining\FcGoal::class, 'forward_chaining_id');
     }
 
     public function fcRuleGroups(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(\App\Models\FcRuleGroup::class, 'backward_chaining_id');
+        return $this->hasMany(\App\Models\FcRuleGroup::class, 'forward_chaining_id');
     }
 }

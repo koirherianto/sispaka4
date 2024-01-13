@@ -12,7 +12,7 @@
         "inView": false
     },
     {
-        "name": "backward_chaining_id",
+        "name": "forward_chaining_id",
         "dbType": "integer,false,true",
         "htmlType": "number",
         "validations": "required",
@@ -109,10 +109,10 @@
     },
     {
         "type": "relation",
-        "relation": "mt1,ForwardChaining,backward_chaining_id"
+        "relation": "mt1,ForwardChaining,forward_chaining_id"
     },
     {
         "type": "relation",
-        "relation": "1tm,FcRule,bc_goal_id"
+        "relation": "1tm,FcRule,fc_goal_id"
     }
 ]

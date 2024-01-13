@@ -58,7 +58,5 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::resource('forwardChainings', App\Http\Controllers\ForwardChaining\ForwardChainingController::class);
-    Route::resource('fcGoals', App\Http\Controllers\FcGoalController::class);
+    Route::resource('fcGoals', App\Http\Controllers\ForwardChaining\FcGoalController::class);
 });
-
-

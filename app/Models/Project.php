@@ -54,6 +54,17 @@ class Project extends Model implements HasMedia
         return $this->hasOne(\App\Models\BackwardChaining\BackwardChaining::class, 'project_id');
     }
 
+    public function forwardChainings(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\App\Models\ForwardChaining\ForwardChaining::class, 'project_id');
+    }
+
+    // forwardChainings for 1 project
+    public function forwardChaining(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(\App\Models\ForwardChaining\ForwardChaining::class, 'project_id');
+    }
+
     public function contributors(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(\App\Models\Contributor::class, 'project_id');
