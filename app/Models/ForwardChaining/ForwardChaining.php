@@ -40,6 +40,6 @@ class ForwardChaining extends Model
 
     public function fcRuleGroups(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(\App\Models\FcRuleGroup::class, 'forward_chaining_id');
+        return $this->hasMany(\App\Models\ForwardChaining\FcRuleGroup::class, 'forward_chaining_id');
     }
 }
